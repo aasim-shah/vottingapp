@@ -121,7 +121,7 @@ router.get('/logout', Tokenauth,  user.logout);
 
 
 
-router.get('/voted' , Tokenauth, user.voted_get)
+router.post('/voted' , Tokenauth, user.voted_post)
 router.post('/admin/search' , Tokenauth,isAdmin, user.admin_search)
 router.post('/participate',Tokenauth ,upload.single('image'),  user.participate_post)
 router.get('/participate' , Tokenauth, user.participate_get)

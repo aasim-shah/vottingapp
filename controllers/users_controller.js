@@ -62,7 +62,7 @@ class users {
 
   
     async  voted_get(req ,res) {
-        const id = '61cb582bb1072c20773a540c'
+        const id = '61cc8cc6467c71227c33724c'
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
         const user_vote = check_voted.voted;
         console.log(user_vote)

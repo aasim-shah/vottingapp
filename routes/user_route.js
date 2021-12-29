@@ -62,9 +62,9 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new googleAuth({
-  clientID:     '757303628015-slh7rp9gd2nelf7g9p6luqltd499ts21.apps.googleusercontent.com',
-  clientSecret: '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',
-  callbackURL: "http://localhost:8000/user/auth/google/callback",
+  clientID:     '771092605828-t9d8cb8pcdpa167rklqkp40pu8jj917u.apps.googleusercontent.com',
+  clientSecret: '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',
+  callbackURL: "https://voting-app-demo.glitch.me/user/auth/google/callback",
   passReqToCallback   : true
 },
 function(request, accessToken, refreshToken, profile, done) {

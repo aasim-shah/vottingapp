@@ -1,0 +1,13 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navbar.ejs') %>
+<div class="container">
+    <% if(user){ %>
+    <h4><%= user.username %></h4>
+    <% }else{ %>
+        <h1 class="font-bold mt-12 text-3xl text-center">NO User Found !</h1>
+         <% } %>
+</div>
+
+<%- include('./partials/footer.ejs') %>
+
+

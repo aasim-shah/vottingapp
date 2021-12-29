@@ -1,0 +1,28 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navbar.ejs') %>
+<div class="container w-72 flex items-start mt-10 h-72">
+
+  <div class="container mx-auto ">
+      <div class="w-58 bg-gray-700 border text-white py-3 px-4"> 
+          <div class="flex relative"><h3>All Users</h3>
+            <h4 class="font-bold ml-4 absolute right-3">723429</h4></div>
+      </div>
+      <div class="w-58 bg-gray-700 border text-white py-3 px-4"> 
+          <div class="flex relative"><h3>Participants</h3>
+            <h4 class="font-bold ml-4 absolute right-3">7329</h4></div>
+      </div>
+      <div class="w-58 bg-gray-700 border text-white py-3 px-4"> 
+          <form action="/user/admin/search" method="post">
+              <div class="flex relative">
+                  <input type="text" name="search" id="" placeholder="Search" 
+                  class="py-2 px-2 rounded-md text-black text-center w-34"></div>
+                  <button type="submit" class=" px-2 bg-gray-800 border  rounded-md w-44 ml-2 mt-2">Search </button>
+           </form>
+      </div>
+  </div>
+</div>
+    
+
+<%- include('./partials/footer.ejs') %>
+
+

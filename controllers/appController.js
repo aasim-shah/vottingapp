@@ -3,7 +3,7 @@ import userModel from "../models/userModel.js";
 
 class apps {
     home(req ,res) {
-        res.send('homepage')
+       res.render('home')
     }
     async  okay(req ,res) {
         res.send('sajdflsjdlfjsalo okay')

@@ -14,6 +14,7 @@ const local = passportLocal.Strategy
 const router = express.Router()
 router.use(urlencoded({extended : false}))
 router.use(cookieParser())
+
 const user = new users()
 router.use(session({
     secret: 'sdfsadfsdfasdf cat',

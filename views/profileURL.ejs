@@ -3,16 +3,24 @@
 <div class="container">
     <% if(user){ %>
     <div class="container mx-auto">
-      <div class="bg-gray-300 rounded border w-64">
+      <div class="bg-gray-300 rounded border w-84">
         <img src="<%= user.image %>" class="rounded-md" />
         <p class="text-lg font-bold mb-3 mt-3">Name : 
           <%= user.name %>
         </p>
+          <p class="text-lg font-bold mb-3 mt-3">Total Votes  : 
+          <%= user.total_votes %>
+        </p>
          <form action="/user/voted" method="post">
               <input type="hidden" name="participant_id" Placeholder="search" value="<%= user.google_id %>"/>
-               <button type='submit' class="px-3 py-2 bg-gray-700 rounded-full  text-white font-bold ml-20" >Vote Now</button>
+           <div class="flex justify-center my-2" >
+             
+               <button type='submit' class="px-3 py-2 bg-gray-700 rounded-full  text-white font-bold " >Vote Now</button>
+               <a  href="/" class="px-3 py-2 bg-gray-700 rounded-full  text-white font-bold ml-1" >Participate Now</a>
+           </div>
         </form>
       </div>
+
   </div>
   
   

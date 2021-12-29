@@ -68,7 +68,7 @@ class users {
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
         
         const participant = await userModel.findOne({google_id : participant_id})
-      const
+      const pariticipant_total_votes = participant.total_votes;
         const user_vote = check_voted.voted;
       const votes = await contestModel.findById(id)
         const n = Number(votes.votes)
@@ -80,7 +80,7 @@ class users {
                 voted : true  
             })
             const participant_voted = await userModel.findOneAndUpdate({google_id : participant_id} , {
-             total_votes :user_total_votes + 1
+             total_votes :pariticipant_total_votes + 1
             })
             res.send('voted successfully')
         }

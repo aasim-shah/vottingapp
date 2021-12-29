@@ -6,9 +6,8 @@
   }
   #voteBtn{
       position: relative;
-  animation: shake 0.5s;
+  animation: shake 0.8s infinite;
     animation-delay: 3s ;
-  animation-iteration-count: infinite;
   }
   
 @keyframes shake {
@@ -78,3 +77,10 @@
 <%- include('./partials/footer.ejs') %>
 
 
+<script>
+$(document).ready(function() {
+    setInterval(function() {
+        $(".voteBtn").css("animation", "shake");
+    }, 500);
+});
+</script>

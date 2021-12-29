@@ -2,13 +2,13 @@
   "name": "voting_app",
   "version": "1.0.0",
   "description": "",
-  "main": "sever.js",
+  "main": "app.js",
   "engines": {
     "node": "14.17.5",
     "npm": "6.14.14"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",

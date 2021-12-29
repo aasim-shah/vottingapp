@@ -66,8 +66,10 @@ class users {
       console.log(participant_id)
         const id = '61cc8cc6467c71227c33724c'
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
+        
+        const participant = await userModel.findOne({google_id : participant_id})
+      const
         const user_vote = check_voted.voted;
-        console.log(user_vote)
       const votes = await contestModel.findById(id)
         const n = Number(votes.votes)
         if(user_vote){
@@ -75,7 +77,10 @@ class users {
         }else{
             const new_votes = await contestModel.findByIdAndUpdate(id , {votes : n+1})
             const user = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
-                voted : true
+                voted : true  
+            })
+            const participant_voted = await userModel.findOneAndUpdate({google_id : participant_id} , {
+             total_votes :user_total_votes + 1
             })
             res.send('voted successfully')
         }

@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     username : String,
     google_id : String,
     password : String,
+    total_votes : {type : Number , default : 0},
     image : String,
     voted : {type : Boolean , default : false},
     isAdmin : Boolean,

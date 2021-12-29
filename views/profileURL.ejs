@@ -2,9 +2,14 @@
 <%- include('./partials/navbar.ejs') %>
 <div class="container">
     <% if(user){ %>
-    <h4><%= user.username %></h4>
     <div class="container mx-auto">
-      <div class="bg-gray-300 "
+      <div class="bg-gray-300 rounded border w-64">
+        <img src="<%= user.image %>" class="rounded-md" />
+        <p class="text-lg font-bold mb-3 mt-3">Name : 
+          <%= user.name %>
+        </p>
+        <a href="" class="px-3 py-2 bg-gray-700 rounded-full  text-white font-bold ml-20" >Vote Now</a>
+      </div>
   </div>
   
   

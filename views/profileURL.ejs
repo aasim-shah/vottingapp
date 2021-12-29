@@ -9,17 +9,19 @@
     <% if(user){ %>
     <div class="container mx-auto">
       <div class="bg-gray-300 rounded border  w-84">
-        <div class="flex py-2 px-2">
-          <div class='col-'>
-        <p class="text-lg font-bold mt-3">
+        <div class="flex py-4 px-2">
+          <div class='col-6 flex flex-col items-center  place-content-center '>
+        <p class="text-lg font-bold ">
           <%= user.name %>
         </p> 
-             <p class="text-lg font-bold "> 
+             <p class="text-lg font-bold "> VOTES :
           <%= user.total_votes %>
         </p>
+        <p class="text-sm italic "> <%= user.username %>
+        </p>
           </div>
-          <div class="img">
-                    <img src="<%= user.image %>" class="rounded-md w-36 "  />
+          <div class="col-6">
+                    <img src="<%= user.image %>" class="rounded-md w-36 h-36"  />
 
           </div>
         </div>

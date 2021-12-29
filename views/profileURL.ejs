@@ -4,6 +4,11 @@
   .btn-bg{
     background-color:#FE3C72;
   }
+  
+  @keyframes mymove {
+  from {left: 0px;}
+  to {left: 200px;}
+}
 </style>
 <div class="ohk  pb-2">
     <% if(user){ %> 
@@ -32,10 +37,10 @@
       <div class="container">
         <form action="/user/voted" method="post">
               <input type="hidden" name="participant_id" Placeholder="search" value="<%= user.google_id %>"/>
-           <div class="flex flex-col my-2" >
+           <div class="flex flex-col container my-2" >
              
-               <button type='submit' class="px-3 py-2 btn-bg rounded-full  text-white font-bold mb-2 " >Vote Now</button>
-               <a  href="/" class="px-3 py-2 btn-bg rounded-full  text-center text-white font-bold ml-1" >Participate Now</a>
+               <button type='submit' class="px-3 py-1 btn-bg text-xl tracking-wider rounded-full  text-white font-bold mb-2 " >VOTE NOW</button>
+               <a  href="/" class="px-3 py-1 btn-bg rounded-full text-xl  tracking-wider	 text-center text-white font-bold ml-1" >PARTICIPATE NOW</a>
            </div>
         </form>
         <div class=' flex justify-center	 shadow-lg shadow-black	 rounded-full py-2 mt-2'>

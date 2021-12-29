@@ -5,9 +5,12 @@
     background-color:#FE3C72;
   }
   #voteBtn{
-      position: relative;
-  animation: shake 0.8s infinite;
-    animation-delay: 3s ;
+          backface-visibility: hidden;
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 3s;
   }
   
 @keyframes shake {
@@ -80,7 +83,8 @@
 <script>
 $(document).ready(function() {
     setInterval(function() {
-        $(".voteBtn").css("animation", "shake");
-    }, 500);
+        $(".shk").css("animation", "shakeMe");
+    }, 1000);
 });
+
 </script>

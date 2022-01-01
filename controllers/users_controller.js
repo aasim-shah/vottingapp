@@ -103,8 +103,16 @@ class users {
 
   async participate_post (req, res)  {
     const user  = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
-        name : req.body.name,
-        username : req.body.username,
+        first_name : req.body.first_name,
+        last_name : req.body.last_name,
+        marital_status : req.body.marital_status,
+        city : req.body.city,
+        state : req.body.state,
+        phone : req.body.phone,
+        instagram_username : req.body.instagram_username,
+      username : req.body.username,
+        age : req.body.age,
+      
         image : req.file.path,
         isParticipant : true
     })

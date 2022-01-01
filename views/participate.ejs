@@ -1,18 +1,22 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
-<div class="container w-72 flex items-end h-72">
+<div class="container w-72 flex items-end  my-3">
 
   <form action="/user/participate" method="post" enctype="multipart/form-data">
       <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
       <input type="text" class="form-control mb-2" name="last_name" placeholder=" Last Name ">
-
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
-      <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
+        <label for="single">Single </label>
+       <input type="radio" name="marital_status" value="Single" id="single" checked> 
+        <label for="married">Married </label>
+         <input type="radio" name="marital_status" value="married" id="married" >
+        <label for="divorced">Divorced </label>
+    <input type="radio" name="marital_status" value="divorced" id="divorced">
+      <input type="text" class="form-control mb-2" name="age" placeholder=" AGE ">
+      <input type="text" class="form-control mb-2" name="phone" placeholder="Phone Number ">
+      <input type="text" class="form-control mb-2" name="city" placeholder=" City ">
+      <input type="text" class="form-control mb-2" name="state" placeholder=" State ">
+      <input type="text" class="form-control mb-2" name="instagram_username" placeholder=" Instagram Username ">
+  
 
     
     

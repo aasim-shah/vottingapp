@@ -34,19 +34,35 @@
             <img src="" alt="Image" />
         </div>
         <div class="row_images">
-    <div class="row_inner flex  py-1 px-3 border">
+    <div class="row_inner flex  py-1 px-4 border ">
           <% if(user){ user.forEach((item)=>{%>
-            <img src="<%=item.image %>"  class="h-16 w-16 mr-1 rounded-full"/>
+            <div class="flex flex-col w-12 mr-1">
+            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
+            <span class="text-sm"><%=item.name %></span>
+      </div>
           <% }) } %>
         <% if(user){ user.forEach((item)=>{%>
-            <img src="<%=item.image %>"  class="h-16 w-16 mr-1 rounded-full"/>
+            <div class="flex flex-col w-12 mr-1">
+            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
+            <span class="text-sm"><%=item.name %></span>
+      </div>
           <% }) } %>
         <% if(user){ user.forEach((item)=>{%>
-            <img src="<%=item.image %>"  class="h-16 w-16 mr-1 rounded-full"/>
+           <div class="flex flex-col w-12 mr-1">
+            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
+            <span class="text-sm"><%=item.name %></span>
+      </div>
           <% }) } %>
         <% if(user){ user.forEach((item)=>{%>
-            <img src="<%=item.image %>"  class="h-16 w-16 mr-1 rounded-full"/>
-          <% }) } %>
+<div class="flex flex-col w-12 mr-1">
+            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
+            <span class="text-sm"><%=item.name %></span>
+      </div>          <% }) } %>
+      <% if(user){ user.forEach((item)=>{%>
+<div class="flex flex-col w-12 mr-1">
+            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
+            <span><%=item.name %></span>
+      </div>          <% }) } %>
       
   </div>
 

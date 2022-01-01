@@ -1,21 +1,20 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
-<div class="container w-72 flex items-end h-72">
-profile
-</div>
+
 <% if(user.isParticipant){ %>
-<div class="" >
-  <$
+<div class="" > Contest Votes : 
+  <%=contest.votes %>
 </div>
 <% }else{ %>
 <div class="" >
-  You haven't been part a contest yet
+  You haven't been part of a contest yet
 </div>
-<h4>
-  Join Contest Now 
-</h4>
-<div class="cart" >
-  
+
+<div class="flex flex-col my-4">
+ <p class="text-start  px-3" >
+   Go To home and join Contest
+  </p>
+<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md mx-4"  id="home_redirect">JOIN NOW</a>
 </div>
     
 <% } %>

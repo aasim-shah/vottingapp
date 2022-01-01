@@ -6,17 +6,19 @@
   <%=contest.votes %>
 </div>
 <% }else{ %>
-<div class="" >
+<div class="container mx-auto py-8">
+  <div class="text-center text-xl" >
   You haven't been part of a contest yet
 </div>
 
 <div class="flex flex-col my-4">
- <p class="text-start  px-3" >
+ <p class="text-start px-4" >
    Go To home and join Contest
   </p>
 <a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md mx-4"  id="home_redirect">JOIN NOW</a>
 </div>
-    
+</div>
+
 <% } %>
 
 <%- include('./partials/footer.ejs') %>

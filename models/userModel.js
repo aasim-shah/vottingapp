@@ -4,7 +4,15 @@ import db from "../db/db.js";
 
 
 const userSchema = mongoose.Schema({
-    name :String,
+    first_name :String,
+    last_name :String,
+    age :Number,
+    Marital_status :String,
+    first_name :String,
+    phone :String,
+    city :String,
+    state :String,
+    instagram_username :String,
     username : String,
     google_id : String,
     password : String,

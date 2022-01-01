@@ -1,10 +1,7 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
 <style>
-  body{
-    min-height:4000px;
-  }
-  .countdown{
+    .countdown{
     top:30%;
     left:25%;
     color:red;
@@ -51,28 +48,7 @@
             <span class="text-sm"><%=item.name %></span>
       </div>
           <% }) } %>
-        <% if(user){ user.forEach((item)=>{%>
-            <div class="flex flex-col w-12 mr-1">
-            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
-            <span class="text-sm"><%=item.name %></span>
-      </div>
-          <% }) } %>
-        <% if(user){ user.forEach((item)=>{%>
-           <div class="flex flex-col w-12 mr-1">
-            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
-            <span class="text-sm"><%=item.name %></span>
-      </div>
-          <% }) } %>
-        <% if(user){ user.forEach((item)=>{%>
-<div class="flex flex-col w-12 mr-1">
-            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
-            <span class="text-sm"><%=item.name %></span>
-      </div>          <% }) } %>
-      <% if(user){ user.forEach((item)=>{%>
-<div class="flex flex-col w-12 mr-1">
-            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
-            <span><%=item.name %></span>
-      </div>          <% }) } %>
+     
       
   </div>
 
@@ -99,9 +75,57 @@
 
 
 
-<div class="fixed bottom-3 w-full ">
-        <a href="" class="px-12 ml-2 py-2 bg-black font-bold  mr-1 text-white text-center">HOME</a>
-        <a href="" class="px-12 py-2 bg-black text-white font-bold mr-1 text-center">PROFILE</a>
+
+<!-- secon card  -->
+
+<div class=" py-3 px-2 mt-3 rounded-md shadow-md shadow-black mx-2" style="border:1px solid gray ">
+
+
+<div class="container mx-auto dd">
+    <div class="w-42">
+        <div class="card h-44 items-center border rounded-md bg-yellow-200">
+            <img src="" alt="Image" />
+        </div>
+        <div class="row_images">
+          <h4 class=" text-center  text-md my-2" >
+             Top Contestants 
+          </h4>
+    <div class="row_inner flex justify-center py-1  px-1 border ">
+          <% if(user){ user.forEach((item)=>{%>
+            <div class="flex flex-col w-12 mr-1">
+            <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
+            <span class="text-sm"><%=item.name %></span>
+      </div>
+          <% }) } %>
+      
+  </div>
+
+      </div>
+      
+      <div class="botton mt-3 flex flex-col text-center">
+            <form action="/user/voted" method="post" class="">
+              <input type="hidden" name="participant_id" Placeholder="search"/>
+              <h4 class="text-start">
+                Vote for Your favourite contestant
+              </h4>
+            <button type="submit" class="py-2  btncolor mt-2 text-lg text-white font-bold rounded" style="width:270px">VOTE</button>
+            </form>
+        <h4 class="text-start mt-2">
+              Join contest now
+              </h4>
+                    <a href="/user/participate" class=" py-2 text-lg btncolor mt-2 text-white font-bold mx-auto rounded mr-7" style="width:270px">PARTICIPATE</a>
+
+          </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="fixed bottom-3 w-full flex flex-row ">
+        <a href="" class="px-12 ml-2 py-2 btncolor font-bold  mr-1 text-white text-center">HOME</a>
+        <a href="" class="px-12 py-2 btncolor text-white font-bold mr-1 text-center">PROFILE</a>
 </div>
 <%- include('./partials/footer.ejs') %>
 

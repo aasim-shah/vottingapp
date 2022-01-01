@@ -42,7 +42,7 @@ class users {
   
 
     async  dashboard_get(req ,res) {
-     const maxVotes = await userModel.find().sort({total_votes : -1}).limit(1)
+     const maxVotes = await userModel.find().sort({total_votes : -1}).limit(5)
        res.render('home' , {user: maxVotes})
     }
 

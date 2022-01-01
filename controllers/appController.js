@@ -3,7 +3,7 @@ import userModel from "../models/userModel.js";
 
 class apps {
   async  home(req ,res) {
-     const maxVotes = await userModel.find().sort({total_votes : -1})
+     const maxVotes = await userModel.find().sort({total_votes : -1}).limit(5)
       console.log(maxVotes)
        res.render('home' , {user: maxVotes})
     }

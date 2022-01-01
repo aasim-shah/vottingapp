@@ -16,7 +16,9 @@ class users {
          res.redirect('/user/dashboard')
     }
   
-   async  profile_get(req ,res) {
+   async profile_get(req ,res) {
+     
+     const user = await userModel.find({})
          res.render('profile')
     }
   

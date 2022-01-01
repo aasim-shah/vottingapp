@@ -1,6 +1,9 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
 <style>
+  body{
+    min-height:4000px;
+  }
   .countdown{
     top:30%;
     left:25%;
@@ -37,10 +40,10 @@
             <img src="" alt="Image" />
         </div>
         <div class="row_images">
-          <h4 class=" text-center font-bold text-md my-2" >
+          <h4 class=" text-center  text-md my-2" >
              Top Contestants 
           </h4>
-    <div class="row_inner flex  py-1 px-4 border ">
+    <div class="row_inner flex justify-center py-1 px-4 border ">
           <% if(user){ user.forEach((item)=>{%>
             <div class="flex flex-col w-12 mr-1">
             <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
@@ -75,11 +78,18 @@
       </div>
       
       <div class="botton mt-3 flex flex-col text-center">
-            <a href="/user/participate" class=" py-2 btncolor rounded mr-7">Participate</a>
             <form action="/user/voted" method="post" class="">
               <input type="hidden" name="participant_id" Placeholder="search"/>
-            <button type="submit" class="py-2  btncolor rounded">vote</button>
+              <h4 class="text-start">
+              <li></li>
+              </h4>
+            <button type="submit" class="py-2  btncolor mt-2 text-lg text-white font-bold rounded" style="width:270px">VOTE</button>
             </form>
+        <h4 class="text-start mt-2">
+              Join contest now
+              </h4>
+                    <a href="/user/participate" class=" py-2 text-lg btncolor mt-2 text-white font-bold mx-auto rounded mr-7" style="width:270px">PARTICIPATE</a>
+
           </div>
     </div>
 </div>

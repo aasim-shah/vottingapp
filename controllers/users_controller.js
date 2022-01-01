@@ -15,6 +15,11 @@ class users {
         console.log(req.user)
          res.redirect('/user/dashboard')
     }
+  
+   async  profile_get(req ,res) {
+         res.render('profile')
+    }
+  
     async  login_get(req ,res) {
       res.render('login')
     }

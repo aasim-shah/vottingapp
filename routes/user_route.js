@@ -120,6 +120,7 @@ router.get('/logout', Tokenauth,  user.logout);
 
 
 
+router.post('/profile' , Tokenauth, user.profile_get)
 
 router.post('/voted' , Tokenauth, user.voted_post)
 router.post('/admin/search' , Tokenauth,isAdmin, user.admin_search)

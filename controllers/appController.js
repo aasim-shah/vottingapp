@@ -2,8 +2,10 @@ import userModel from "../models/userModel.js";
 
 
 class apps {
-    home(req ,res) {
-       res.render('home')
+  async  home(req ,res) {
+     const maxVotes = await userModel.find().sort({total_votes : -1})
+      console.log(maxVotes)
+       res.render('home' , {user: maxVotes})
     }
     async  okay(req ,res) {
         res.send('sajdflsjdlfjsalo okay')

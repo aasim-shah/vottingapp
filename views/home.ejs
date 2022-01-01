@@ -33,6 +33,15 @@
         <div class="card h-44 items-center border rounded-md bg-yellow-200">
             <img src="" alt="Image" />
         </div>
+        <div class="row_images">
+    <div class="row_inner flex  py-1 px-3 border">
+          <% if(user){ user.forEach((item)=>{%>
+            <img src="<%=item.image %>"  class="h-16 w-16 rounded-full"/>
+          <% }) } %>
+  </div>
+
+      </div>
+      
       <div class="botton flex justify-center mt-3">
             <a href="/user/participate" class="px-3 py-2 bg-yellow-600 rounded mr-7">Participate</a>
             <form action="/user/voted" method="post">

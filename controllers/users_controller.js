@@ -6,8 +6,7 @@ import { name } from "ejs";
 
 class users {
    async home(req ,res) {
-      const maxVotes = await userModel.find().sort({total_votes : -1})
-      console.log(maxVotes)
+     
         res.send('users homepage')
     }
    
@@ -45,7 +44,7 @@ class users {
 
     async  dashboard_get(req ,res) {
         
-      res.send('hahahahaha')
+      res.render('home')
     }
 
 

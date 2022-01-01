@@ -17,9 +17,12 @@ class users {
     }
   
    async profile_get(req ,res) {
-     
-     const user = await userModel.find({})
-         res.render('profile')
+     const google_id = req.user.google_id;
+     console.log(google_id)
+     const contest = await contestModel.findOne()
+     console.log(contest)
+     const user = await userModel.findOne({google_id})
+         res.render('profile' , {user , contest})
     }
   
     async  login_get(req ,res) {

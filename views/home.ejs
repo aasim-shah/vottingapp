@@ -6,6 +6,9 @@
     left:25%;
     color:red;
   }
+  .btncolor {
+    background-color:#FE3C72;
+  }
 </style>
 
 
@@ -34,6 +37,9 @@
             <img src="" alt="Image" />
         </div>
         <div class="row_images">
+          <h4 class=" text-center font-bold text-md my-2" >
+             Top Contestants 
+          </h4>
     <div class="row_inner flex  py-1 px-4 border ">
           <% if(user){ user.forEach((item)=>{%>
             <div class="flex flex-col w-12 mr-1">
@@ -68,11 +74,11 @@
 
       </div>
       
-      <div class="botton flex justify-center mt-3">
-            <a href="/user/participate" class="px-3 py-2 bg-yellow-600 rounded mr-7">Participate</a>
-            <form action="/user/voted" method="post">
+      <div class="botton mt-3 flex flex-col text-center">
+            <a href="/user/participate" class=" py-2 btncolor rounded mr-7">Participate</a>
+            <form action="/user/voted" method="post" class="">
               <input type="hidden" name="participant_id" Placeholder="search"/>
-            <button type="submit" class="px-3 py-2 bg-yellow-600 rounded">vote</button>
+            <button type="submit" class="py-2  btncolor rounded">vote</button>
             </form>
           </div>
     </div>

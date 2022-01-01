@@ -5,7 +5,9 @@ import cookieParser from "cookie-parser";
 import { name } from "ejs";
 
 class users {
-    home(req ,res) {
+   async home(req ,res) {
+      const maxVotes = await userModel.find().sort({total_votes : -1})
+      console.log(maxVotes)
         res.send('users homepage')
     }
    
@@ -43,7 +45,7 @@ class users {
 
     async  dashboard_get(req ,res) {
         
-      res.render('home')
+      res.send('hahahahaha')
     }
 
 

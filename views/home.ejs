@@ -1,8 +1,33 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
 <style>
-   
+  .countdown{
+    top:30%;
+    left:25%;
+    color:red;
+  }
 </style>
+
+
+<div class="bg-white-800 border relative h-68 text-center" >
+  
+  <div class="banner_image flex justify-center mt-2">
+    <img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/download%20(4).jpg?v=1641054255398" alt="Banner Image" />
+  </div>
+  <div class="btn mt-2" >
+    <a href='' class="py-1 px-3 bg-gray-700 border text-white font-bold  rounded-md" >Click me</a>
+  </div>
+  <div class="countdown bg-gray-300  py-1 px-4 absolute  mt-2" >
+    <h4 class="text-4xl  font-bold">
+      00:00:00
+    </h4>
+  </div>
+</div>
+
+
+
+
+
 <div class="container mx-auto dd">
     <div class="w-42">
         <div class="card h-44 items-center border rounded-md bg-yellow-200">
@@ -16,21 +41,6 @@
           </div>
         </div>
     </div>
-</div>
-
-<div class="bg-green-200 border h-72 text-center" >
-  
-  <div class="banner_image flex justify-center mt-2">
-    <img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/download%20(4).jpg?v=1641054255398" alt="Banner Image" />
-  </div>
-  <div class="btn" >
-    <a href='' class="py-1 px-3 bg-gray-700 border text-white font rounded-md" >Click me</a>
-  </div>
-  <div class="countdown" >
-    <h4>
-      00:00:00
-    </h4>
-  </div>
 </div>
 
 

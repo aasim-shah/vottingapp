@@ -11,6 +11,7 @@ const userSchema = mongoose.Schema({
     first_name :String,
     phone :String,
     city :String,
+    contests : [],
     state :String,
     instagram_username :String,
     username : String,

@@ -7,8 +7,8 @@ class apps {
   async  home(req ,res) {
     const contests = await contesModel.find()
      const maxVotes = await userModel.find().sort({total_votes : -1}).limit(5)
-      console.log(maxVotes)
-       res.render('home' , {user: maxVotes , contests})
+    
+       res.render('home' , {user: maxVotes , contests : contests})
     }
     async  okay(req ,res) {
         res.send('sajdflsjdlfjsalo okay')

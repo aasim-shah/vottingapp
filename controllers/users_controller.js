@@ -113,7 +113,7 @@ class users {
         instagram_username : req.body.instagram_username,
       username : req.body.username,
         age : req.body.age,
-      
+        contests:{}
         image : req.file.originalname,
         isParticipant : true
     })

@@ -2,6 +2,8 @@ import userModel from "../models/userModel.js";
 import contestModel from "../models/contestModel.js";
 import  Jwt  from 'jsonwebtoken';
 import cookieParser from "cookie-parser";
+import contesModel from "../models/contestModel.js";
+
 import { name } from "ejs";
 
 class users {
@@ -53,8 +55,10 @@ class users {
   
 
     async  dashboard_get(req ,res) {
+        const contests = await contesModel.find()
      const maxVotes = await userModel.find().sort({total_votes : -1}).limit(5)
-       res.render('home' , {user: maxVotes})
+    
+       res.render('home' , {user: maxVotes , contests : contests})
     }
 
 
@@ -99,7 +103,8 @@ class users {
   
 
     async participate_get(req ,res) {
-        res.render('participate')
+      const contest_id = req.params.id;
+        res.render('participate' , {contest : contest_id} )
     }
 
   async participate_post (req, res)  {
@@ -113,10 +118,9 @@ class users {
         instagram_username : req.body.instagram_username,
       username : req.body.username,
         age : req.body.age,
-        contests:{}
         image : req.file.originalname,
-        isParticipant : true
-    })
+        isParticipant : true,
+    } , {$push : {contests : req.body.contest_id}})
      if(user){
          res.send('particapted successfully')
      }

@@ -118,7 +118,11 @@ user.login_post
 router.get('/dashboard' , Tokenauth  , user.dashboard_get)
 router.get('/logout', Tokenauth,  user.logout);
 
-
+router.post('/projects', upload.array('uploadedImages', 10),async function(req, res) {
+  console.log(req.files)
+  
+  res.end();
+});
 
 router.get('/profile' , Tokenauth, user.profile_get)
 

@@ -21,10 +21,10 @@ class users {
   
    async profile_get(req ,res) {
      const google_id = req.user.google_id;
-     console.log(google_id)
      const contest = await contestModel.findOne()
-     console.log(contest)
      const user = await userModel.findOne({google_id})
+     
+     console.log(user.contests)
          res.render('profile' , {user , contest})
     }
   

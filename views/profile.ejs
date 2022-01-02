@@ -3,7 +3,11 @@
 
 <% if(user.isParticipant){ %>
 <div class="" > Contest Votes : 
-  <%=contest.votes %>
+  <div class="flex flex-row">
+    <div class="img">
+      <img src="<%= user.image %>" />
+    </div>
+  </div>
 </div>
 <% }else{ %>
 <div class="container mx-auto py-8">

@@ -113,7 +113,7 @@ class users {
       username : req.body.username,
         age : req.body.age,
       
-        image : req.file.path,
+        image : req.file.originalname,
         isParticipant : true
     })
      if(user){

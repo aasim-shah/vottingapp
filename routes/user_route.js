@@ -15,6 +15,7 @@ const router = express.Router()
 router.use(urlencoded({extended : false}))
 router.use(cookieParser())
 
+
 const user = new users()
 router.use(session({
     secret: 'sdfsadfsdfasdf cat',
@@ -25,7 +26,6 @@ router.use(session({
 router.use(express.json())
 router.use(passport.initialize());
 router.use(passport.session());
-
 
 
 var storage = multer.diskStorage({

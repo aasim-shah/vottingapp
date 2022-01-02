@@ -8,8 +8,7 @@ const app = express()
 const port = process.env.port || 8000
 app.use('/user' , userRoute)
 app.use(express.static('./public/images'))
-app.use('/user' , express.static('./public/images'))
-
+app.use('/user' , express.static('/user'))
 app.set('view engine' , 'ejs')
 app.use(express.json())
 const home = new apps()

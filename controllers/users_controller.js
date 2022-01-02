@@ -73,6 +73,7 @@ class users {
      const searched = await   userModel.findOne({$text: {$search: `${username}`}});
         res.send(searched)
     }
+  
 
   
     async  voted_post(req ,res) {

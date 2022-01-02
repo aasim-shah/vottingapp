@@ -6,6 +6,7 @@ import { name } from "ejs";
 
 class users {
    async home(req ,res) {
+     
         res.send('users homepage')
     }
    

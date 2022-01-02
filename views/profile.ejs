@@ -3,9 +3,12 @@
 
 <% if(user.isParticipant){ %>
 <div class="" > Contest Votes : 
-  <div class="flex flex-row">
-    <div class="img">
-      <img src="<%= user.image %>" />
+  <div class="flex flex-row justify-center">
+    <div class="img flex flex-col ">
+      <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
+      <p class"text font-bold text-center"><%= user.first_name %>
+        
+      </p>
     </div>
   </div>
 </div>

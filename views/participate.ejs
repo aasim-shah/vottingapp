@@ -22,8 +22,9 @@
       <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
   </form>
   <% }else{%>
-   <form action="/user/participated" method="post" enctype="multipart/form-data">
-      <input type="text"       class="form-control mb-2" name="contest_id" placeholder="" value="<%=contest %>">
+   <form action="/user/participated" method="post" >
+     <label for="contest_id" >Contest ID :</label>
+      <input type="text" class="form-control mb-2" id="contest_id" name="contest_id" placeholder="" value="<%=contest %>">
       <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
   </form>
   

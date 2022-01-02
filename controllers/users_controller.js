@@ -133,6 +133,21 @@ class users {
          res.send('particapted successfully')
      }
     };
+  
+  
+ async participated_post (req, res)  {
+    console.log(req.body.contest_id)
+    const user  = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
+        $push : {contests : req.body.contest_id}
+    })
+     if(user){
+         res.send('particapted successfully')
+     }
+    };  
+  
+  
+  
+  
     async  logout(req ,res) {
         res.clearCookie('jwt_Token')
         res.redirect('/user/login')

@@ -104,10 +104,17 @@ class users {
 
     async participate_get(req ,res) {
       const contest_id = req.params.id;
-        res.render('participate' , {contest : contest_id} )
+      const user = await userModel.findOne({google_id :req.user.google_id})
+  if(user.isParticipant){
+      res.render('participate' , {contest : contest_id , participant: true}  )
+  }else{
+          res.render('participate' , {contest : contest_id , participant : false} )
+  }
+      console.log(user.isParticipant)
     }
 
   async participate_post (req, res)  {
+    console.log(req.body.contest_id)
     const user  = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
         first_name : req.body.first_name,
         last_name : req.body.last_name,
@@ -120,7 +127,8 @@ class users {
         age : req.body.age,
         image : req.file.originalname,
         isParticipant : true,
-    } , {$push : {contests : req.body.contest_id}})
+        $push : {contests : req.body.contest_id}
+    })
      if(user){
          res.send('particapted successfully')
      }

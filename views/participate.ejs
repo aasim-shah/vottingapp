@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
 <div class="container w-72 flex items-end  my-3">
-
+<% if(!participant){%>
   <form action="/user/participate" method="post" enctype="multipart/form-data">
       <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
       <input type="text" class="form-control mb-2" name="last_name" placeholder=" Last Name ">
@@ -16,16 +16,18 @@
       <input type="text" class="form-control mb-2" name="city" placeholder=" City ">
       <input type="text" class="form-control mb-2" name="state" placeholder=" State ">
       <input type="hidden" class="form-control mb-2" name="contest_id" placeholder="" value="<%=contest %>">
-
       <input type="text" class="form-control mb-2" name="instagram_username" placeholder=" Instagram Username ">
-  
-
-    
-    
       <input type="text" class="form-control mb-2" name="username" placeholder=" Username ">
       <input type="file" class="form-control" name="image">
       <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
   </form>
+  <% }else{%>
+   <form action="/user/participated" method="post" enctype="multipart/form-data">
+      <input type="text"       class="form-control mb-2" name="contest_id" placeholder="" value="<%=contest %>">
+      <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
+  </form>
+  
+  <% } %>
     
 </div>
     

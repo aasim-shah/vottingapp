@@ -125,5 +125,7 @@ router.get('/profile' , Tokenauth, user.profile_get)
 router.post('/voted' , Tokenauth, user.voted_post)
 router.post('/admin/search' , Tokenauth,isAdmin, user.admin_search)
 router.post('/participate',Tokenauth ,upload.single('image'),  user.participate_post)
+router.post('/participated',Tokenauth , user.participated_post)
+
 router.get('/participate/:id' , Tokenauth, user.participate_get)
 export default router;

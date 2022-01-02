@@ -7,8 +7,8 @@ import db from './db/db.js'
 const app = express()
 const port = process.env.port || 8000
 app.use('/user' , userRoute)
-app.use(express.static('./public'))
-app.use('/user', express.static('./public'))
+app.use(express.static('./public/images'))
+app.use('/user' , express.static('./public/images'))
 
 app.set('view engine' , 'ejs')
 app.use(express.json())

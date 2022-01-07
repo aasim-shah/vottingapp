@@ -22,20 +22,17 @@
 
  <div class="w-11/12 my-3 mx-auto px-2 py-3 border rounded">
       <div class="grid grid-cols-3 gap-1 " >
-        <div class="bg-gray-300 rounded h-12">1</div>
-        <div class="bg-gray-300 rounded h-12">2</div>
-        <div class="bg-gray-300 rounded h-12">3</div>
-      </div>
-      <div class="grid grid-cols-3 gap-1  mt-2" >
-        <div class="bg-gray-300 rounded h-12">4</div>
-        <div class="bg-gray-300 rounded h-12">5</div>
-        <div class="bg-gray-300 rounded h-12">6</div>
+      <% user.galary.forEach((item) => { %>
+      
+        <div class="bg-gray-300  rounded py-2 text-center"><img src="<%= item.filename  %>" class="w-12 mx-auto " /></div>
+                <% }) %>
+
       </div>
       
-<div class="text-center container "> 
+<div class="text-center container my-2"> 
 <form action="/user/projects" method="post" enctype="multipart/form-data">
   <input type="file" name="uploadedImages" value="UPLOAD" multiple class="form-control">
-  <input type="submit" value="UPLOAD" class="py-1 px-8 mt-2 btncolor rounded-md">
+  <input type="submit" value="UPLOAD IMAGES" class="py-1 px-8 mt-2 btncolor rounded-md">
 </form>
 </div>
       <div class="container bg-gray-400 h-32 my-3">a </div>

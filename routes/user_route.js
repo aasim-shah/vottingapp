@@ -88,7 +88,6 @@ const Tokenauth = async (req ,res , next)=>{
  try {
   const token = req.cookies.jwt_Token
   const verfiy =  Jwt.verify(token , 'mysupersecret')
-  console.log(verfiy)
   const verfified_user = await userModel.findOne({google_id : verfiy.google_id})
   req.user = verfified_user
   next()

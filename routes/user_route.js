@@ -68,18 +68,15 @@ passport.use(new googleAuth({
   callbackURL: "https://voting-app-demo.glitch.me/user/auth/google/callback",
   passReqToCallback   : true
 },
-function(request, accessToken, refreshToken, profile, done) {
-  userModel.findOne({google_id : profile.id},function(err , user) {
-    if(user == null){
-     userModel.create({google_id : profile.id},function(err , user){
-       return done(err , user)
-       
-     })
-    }
-    return done(err ,user)
-  })
-  // return done(null, profile);
-}
+ function(request, accessToken, refreshToken, profile, done) {
+    userModel.findOne({ google_id : profile.id },async function (err, user) {
+      if(user == null ){
+        const user  = await  userModel.create({google_id : profile.id})
+        return done( err ,  user)
+      }
+      return done(err, user);
+    });
+  }
 ));
 
 
@@ -112,8 +109,8 @@ router.get('/auth/google',
 router.get( '/auth/google/callback',
     passport.authenticate( 'google', {
         failureRedirect: '/auth/google/failure'
-}),user.google_login2 // user.google_login
-);
+}),user.google_login2 ); // user.google_login
+
 
 
 

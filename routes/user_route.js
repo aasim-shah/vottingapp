@@ -70,10 +70,11 @@ passport.use(new googleAuth({
 },
 function(request, accessToken, refreshToken, profile, done) {
   userModel.findOne({google_id : profile.id},function(err , user) {
-    if(user === null){
-     userModel.create({google_id : profile.id}),function(err , user){
+    if(user == null){
+     userModel.create({google_id : profile.id},function(err , user){
        return done(err , user)
-     }
+       
+     })
     }
     return done(err ,user)
   })
@@ -111,9 +112,8 @@ router.get('/auth/google',
 router.get( '/auth/google/callback',
     passport.authenticate( 'google', {
         failureRedirect: '/auth/google/failure'
-}),(req , res)=> {console.log(req.user) ,console.log('oka')}
-           // user.google_login
-          );
+}),user.google_login2 // user.google_login
+);
 
 
 

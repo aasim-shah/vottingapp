@@ -69,10 +69,14 @@ passport.use(new googleAuth({
   passReqToCallback   : true
 },
 function(request, accessToken, refreshToken, profile, done) {
-  userModel.findOne({google_id : profile.id}),function(err , user) {
-    console.log(err)
+  userModel.findOne({google_id : profile.id},function(err , user) {
+    if(user === null){
+     userModel.create({google_id : profile.id}),function(err , user){
+       return done(err , user)
+     }
+    }
     return done(err ,user)
-  }
+  })
   // return done(null, profile);
 }
 ));

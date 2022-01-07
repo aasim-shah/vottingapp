@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
     age :Number,
     marital_status :String,
     first_name :String,
+    video : String,
     phone :String,
     city :String,
     contests : [],

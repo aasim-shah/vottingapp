@@ -74,6 +74,12 @@ class users {
         res.send(searched)
     }
   
+  
+  async partipant_video (req ,res) {
+    const user = await userModel.findOneAndUpdate({google_id : req.user.google_id}, {video : req.file.originalname})
+          // req.file.originalname,
+    console.log(req.file.path)
+  }
 
   
     async  voted_post(req ,res) {

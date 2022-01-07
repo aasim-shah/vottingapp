@@ -2,7 +2,7 @@
 <%- include('./partials/navbar.ejs') %>
 
 <% if(user.isParticipant){ %>
-<div class="" > Contest Votes : 
+<div class="" >
   <div class="flex flex-row justify-center">
     <div class="img flex flex-col ">
       <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
@@ -35,10 +35,12 @@
   <input type="submit" value="UPLOAD IMAGES" class="py-1 px-8 mt-2 btncolor rounded-md">
 </form>
 </div>
-      <div class="container bg-gray-400 h-32 my-3"><video  </div>
+      <div class="container bg-gray-400 py-2 my-3"><video width="290" height="200" controls>
+  <source src="<%= user.video %>" type="video/mp4">
+</video> </div>
       <div class="text-center container my-2"> 
 <form action="/user/uploadvideo" method="post" enctype="multipart/form-data">
-  <input type="file" name="video" value="video"  class="form-control">
+  <input type="file" name="video" value="video" accept="video/mp4/mkv"  class="form-control">
   <input type="submit" value="UPLOAD VIDEO" class="py-1 px-8 mt-2 btncolor rounded-md">
 </form>
 </div>

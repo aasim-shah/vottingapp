@@ -12,9 +12,13 @@
       <div class="flex ">
    <span>VOTES : </span>
             <% contest.forEach((item) => { %>
-
         <span><%= item.votes %> , </span>
         <% }) %>
+      </div>
+      <div class="grid grid-cols-3 gap-4 " >
+        <div class="bg-gray-300 rounded h-12">shdfhksdhfkhsdkfjsadf</div>
+        <div class="bg-gray-300 rounded h-12">jsdofj;lsjdfl;sdf</div>
+        <div class="bg-gray-300 rounded h-12"></div>
       </div>
     </div>
   </div>
@@ -26,11 +30,11 @@
   You haven't been part of a contest yet
 </div>
 
-<div class="flex flex-col my-4">
+<div class="flex flex-col my-5">
  <p class="text-start px-4" >
    Go To home and join Contest
   </p>
-<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md mx-4"  id="home_redirect">JOIN NOW</a>
+<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md text-center mt-1 mx-4"  id="home_redirect">JOIN NOW</a>
 </div>
 </div>
 
@@ -40,12 +44,6 @@
 
 
 
-<div class="text-center container"> 
-<form action="/user/projects" method="post" enctype="multipart/form-data">
-  <input type="file" name="uploadedImages" value="UPLOAD" multiple class="form-control">
-  <input type="submit" value="UPLOAD" class="py-1 px-8 mt-2 btncolor rounded-md">
-</form>
-</div>
 
 <%- include('./partials/footer.ejs') %>
 

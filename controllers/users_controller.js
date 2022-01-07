@@ -54,12 +54,22 @@ class users {
   
   
   async  google_login2(req ,res) {
-        const user = await userModel.findOne({ google_id : req.user.google_id})
+        const user = await userModel.findOne({ google_id : req.user.id})
+        console.log(req.user)
         if(user){
             const token = Jwt.sign({google_id : req.user.id} , 'mysupersecret')
             res.cookie('jwt_Token' , token )
              res.redirect('/user/dashboard')
-        console.log(user)
+        }else{
+            const token = Jwt.sign({google_id : req.user.id} , 'mysupersecret')
+            
+    console.log(token)
+            const d= new userModel({
+                google_id : req.user.id,
+                tokens : [{token : token}]
+            })
+            const user_added = await d.save()
+            res.redirect('/user/login')
         }
 
       }

@@ -53,12 +53,12 @@ const isAdmin = async function(req, res, next) {
 
 
 
-passport.serializeUser(function(profile, done) {
-  done(null, profile.id);
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 passport.deserializeUser(function(id, done) {
-  userModel.findById(id, function(err, profile) {
-    done(err, profile);
+  userModel.findById(id, function(err, user) {
+    done(err, user);
   });
 });
 

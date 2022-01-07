@@ -69,7 +69,11 @@ passport.use(new googleAuth({
   passReqToCallback   : true
 },
 function(request, accessToken, refreshToken, profile, done) {
-  return done(null, profile);
+  userModel.findOne({google_id : profile.id}),function(err , user) {
+    console.log(err)
+    return done(err ,user)
+  }
+  // return done(null, profile);
 }
 ));
 
@@ -103,7 +107,9 @@ router.get('/auth/google',
 router.get( '/auth/google/callback',
     passport.authenticate( 'google', {
         failureRedirect: '/auth/google/failure'
-}),  user.google_login );
+}),(req , res)=> {console.log(req.user) ,console.log('oka')}
+           // user.google_login
+          );
 
 
 

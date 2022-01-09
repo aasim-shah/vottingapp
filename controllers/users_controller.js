@@ -93,8 +93,8 @@ class users {
   
     async  voted_post(req ,res) {
       const participant_id = req.body.participant_id;
-      console.log(participant_id)
-        const id = '61cc8cc6467c71227c33724c'
+        const id = req.body.contest_id;
+      console.log(id)
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
         
         const participant = await userModel.findOne({google_id : participant_id})

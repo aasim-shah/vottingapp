@@ -92,8 +92,8 @@ class users {
 
   
     async  voted_post(req ,res) {
-      // const participant_id = req.body.participant_id;
-      const participant_id = "102892778442574049237"; //hardcoded for now will change after implementing seachbar in userhome page
+      const participant_id = req.body.participant_id;
+      console.log(participant_id)
         const id = req.body.contest_id;
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
         const participant = await userModel.findOne({google_id : participant_id})
@@ -102,7 +102,7 @@ class users {
       const votes = await contestModel.findById(id)
         const n = Number(votes.votes)
         if(user_vote){
-           res.send('you Already voted')
+           res.send('<h3 class="text-center">you Already voted </h3>')
         }else{
             const new_votes = await contestModel.findByIdAndUpdate(id , {votes : n+1})
             const user = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
@@ -111,7 +111,7 @@ class users {
             const participant_voted = await userModel.findOneAndUpdate({google_id : participant_id} , {
              total_votes :pariticipant_total_votes + 1
             })
-            res.send('voted successfully')
+            res.redirect('back')
         }
         }
   

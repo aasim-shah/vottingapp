@@ -55,15 +55,15 @@
       
       <div class="botton mt-3 flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
-            <label for="cars">Choose a Contestant :</label>
-<select name="participants" id="participants" class="form-control">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+            <label for="cars" class="mt-2">Choose a Contestant :</label>
+<select name="participant_id" id="participants" class="form-control  mb-2">
+<%if(participants) participants.forEach((participant)=>{%>
+  <option value="<%= participant.google_id%>" class=""><%= participant.first_name%></option>
+  <% })%>
+
 </select>
               <input type="hidden" name="contest_id" value="<%= contest._id %>"
-              <h4 class="text-start">
+              <h4 class="text-start mt-2">
                 Vote for Your favourite contestant
               </h4>
             <button type="submit" class="py-2  btncolor mt-2 text-lg text-white font-bold rounded" style="width:270px">VOTE</button>

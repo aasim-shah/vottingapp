@@ -92,11 +92,10 @@ class users {
 
   
     async  voted_post(req ,res) {
-      const participant_id = req.body.participant_id;
+      // const participant_id = req.body.participant_id;
+      const participant_id = "102892778442574049237"; //hardcoded for now will change after implementing seachbar in userhome page
         const id = req.body.contest_id;
-      console.log(id)
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
-        
         const participant = await userModel.findOne({google_id : participant_id})
       const pariticipant_total_votes = participant.total_votes;
         const user_vote = check_voted.voted;

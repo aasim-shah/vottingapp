@@ -6,9 +6,10 @@ import contesModel from "../models/contestModel.js";
 class apps {
   async  home(req ,res) {
     const contests = await contesModel.find()
-     const maxVotes = await userModel.find().sort({total_votes : -1}).limit(5)
+    const participants = await userModel.find({isParticipant : true})
+     const maxVotes = await userModel.find({isParticipant : true}).sort({total_votes : -1}).limit(5)
     
-       res.render('home' , {user: maxVotes , contests : contests})
+       res.render('home' , {user: maxVotes , contests : contests , participants})
     }
     async  okay(req ,res) {
         res.send('sajdflsjdlfjsalo okay')

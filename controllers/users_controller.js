@@ -145,7 +145,7 @@ class users {
         $push : {contests : req.body.contest_id}
     })
      if(user){
-         res.redirect('/')
+         res.redirect('/user/profile')
      }
     };
   

@@ -93,6 +93,9 @@ class users {
   
     async  voted_post(req ,res) {
       const participant_id = req.body.participant_id;
+      if(req.user.google_id == participant_id){
+        res.send('You Can\'t Vote Your Self')
+      }
       console.log(participant_id)
         const id = req.body.contest_id;
         const check_voted = await userModel.findOne({google_id : req.user.google_id})

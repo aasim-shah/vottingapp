@@ -30,14 +30,14 @@
       </div>
       
 <div class="text-center container my-2"> 
-        <div id="divv"></div>
-   <img class="preview" src="#" alt="your image" width="100" height="100" />
-   <img class="preview1" src="#" alt="your image" width="100" height="100" />
-   <img class="preview2" src="#" alt="your image" width="100" height="100" />
-   <img class="preview3" src="#" alt="your image" width="100" height="100" />
-   <img class="preview4" src="#" alt="your image" width="100" height="100" />
-   <img class="preview5" src="#" alt="your image" width="100" height="100" />
-    
+<div class="text-center">
+   <img class="preview" src="#" alt="your image 1"   height="100" />
+   <img class="preview1" src="#" alt="your image"   height="100" />
+   <img class="preview2" src="#" alt="your image"   height="100" />
+   <img class="preview3" src="#" alt="your image"   height="100" />
+   <img class="preview4" src="#" alt="your image"   height="100" />
+   <img class="preview5" src="#" alt="your image" height="100" />
+    </div>
 
 
 <form action="/user/projects" method="post" enctype="multipart/form-data">
@@ -83,13 +83,18 @@
 
 
 <script type="text/javascript">
-document.querySelector('.preview').css('display' : 'none');
-   console.log('preview' +a)
+ document.querySelector(".preview").style.display="none";
+  document.querySelector(".preview1").style.display="none";
+ document.querySelector(".preview2").style.display="none";
+ document.querySelector(".preview3").style.display="none";
+ document.querySelector(".preview4").style.display="none";
+ document.querySelector(".preview5").style.display="none";
 
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+         document.querySelector(".preview").style.display="block";
    document.querySelector('.preview').src=e.target.result;
         }
         reader.readAsDataURL(input.files[0]);
@@ -97,6 +102,7 @@ function readURL(input) {
     if (input.files && input.files[1]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+         document.querySelector(".preview1").style.display="block";
    document.querySelector('.preview1').src=e.target.result;
         }
         reader.readAsDataURL(input.files[1]);
@@ -104,6 +110,7 @@ function readURL(input) {
     if (input.files && input.files[2]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+         document.querySelector(".preview2").style.display="block";
    document.querySelector('.preview2').src=e.target.result;
         }
         reader.readAsDataURL(input.files[2]);
@@ -111,6 +118,8 @@ function readURL(input) {
     if (input.files && input.files[3]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+         document.querySelector(".preview3").style.display="block";
+
    document.querySelector('.preview3').src=e.target.result;
         }
         reader.readAsDataURL(input.files[3]);
@@ -118,6 +127,7 @@ function readURL(input) {
     if (input.files && input.files[4]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+         document.querySelector(".preview4").style.display="block";
    document.querySelector('.preview4').src=e.target.result;
         }
         reader.readAsDataURL(input.files[4]);
@@ -125,6 +135,7 @@ function readURL(input) {
     if (input.files && input.files[5]) {
         var reader = new FileReader();
         reader.onload = function (e) {
+         document.querySelector(".preview5").style.display="block";
    document.querySelector('.preview5').src=e.target.result;
         }
         reader.readAsDataURL(input.files[5]);

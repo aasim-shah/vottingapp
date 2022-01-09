@@ -22,10 +22,7 @@
       <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
   </form>
   <% }else{%>
-   <form action="/user/participated" method="post" >
-     <label for="contest_id" >Contest ID :</label>
-      <input type="text" class="form-control mb-2" id="contest_id" name="contest_id" placeholder="" value="<%=contest %>">
-      <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
+   <h4 class="text-lg my-4 font-bold ">You Already Have Participated </h4>
   </form>
   
   <% } %>

@@ -85,6 +85,7 @@ class users {
   
   
   async partipant_video (req ,res) {
+    console.log('vidoe uploading')
     const user = await userModel.findOneAndUpdate({google_id : req.user.google_id}, {video : req.file.originalname})
   res.redirect('back')
   }

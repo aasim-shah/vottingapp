@@ -87,7 +87,8 @@ function readURL(input) {
     if (input.files && input.files[i]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-   document.getElementById('preview').append('<img src="e.target.result"'/>);
+
+document.getElementById("preview").innerHTML('<img scr="e.target.result" />')
         }
         reader.readAsDataURL(input.files[i]);
     }

@@ -31,6 +31,8 @@
       
 <div class="text-center container my-2"> 
 <img id="uploadPreview1" style="height: 200px;" class="my-2 mx-auto" />
+<img id="uploadPreview2" style="height: 200px;" class="my-2 mx-auto" />
+
 <form action="/user/projects" method="post" enctype="multipart/form-data">
   <input type="file" id="uploadedImages" onChange="PreviewImage1()" name="uploadedImages" value="UPLOAD" multiple class="form-control">
   <input type="submit" value="UPLOAD IMAGES" class="py-1 px-8 mt-2 btncolor rounded-md">
@@ -74,14 +76,18 @@
 
 
 <script type="text/javascript">
+ document.getElementById("uploadPreview1").style.display="none";
     function PreviewImage1() {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("uploadedImages").files[0]);
         oFReader.onload = function (oFREvent) {
            document.getElementById("uploadPreview1").style.display="block";
-            document.getElementById("uploadPreview1").src = oFREvent.target.result;
-        };
+          document.getElementById("uploadPreview1").src = oFREvent.target.result;     
+     };
     };
+  
+  
+  
 </script>
     
     

@@ -30,8 +30,10 @@
       </div>
       
 <div class="text-center container my-2"> 
-        <div id="preview"></div>
- 
+        <div id="divv"></div>
+   <img class="preview" src="#" alt="your image" width="100" height="100" />
+   <img class="preview" src="#" alt="your image" width="100" height="100" />
+   <img class="preview" src="#" alt="your image" width="100" height="100" />
 
 
 
@@ -87,8 +89,7 @@ function readURL(input) {
     if (input.files && input.files[i]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-
-document.getElementById("preview").innerHTML('<img scr="e.target.result" />')
+   document.querySelector('.preview').src=e.target.result;
         }
         reader.readAsDataURL(input.files[i]);
     }

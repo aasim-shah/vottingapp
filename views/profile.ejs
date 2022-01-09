@@ -76,17 +76,18 @@
 
 
 <script type="text/javascript">
- document.getElementById("uploadPreview1").style.display="none";
-    function PreviewImage1() {
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("uploadedImages").files[0]);
-        oFReader.onload = function (oFREvent) {
-           document.getElementById("uploadPreview1").style.display="block";
-          document.getElementById("uploadPreview1").src = oFREvent.target.result;     
-     };
-    };
-  
-  
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('uploadPreview1').src=e.target.result;
+        }
+       for(i=0 ; i< 6 ; i++){
+        reader.readAsDataURL(input.files[i]);
+       }
+    }
+}
+
   
 </script>
     

@@ -145,7 +145,7 @@ class users {
         $push : {contests : req.body.contest_id}
     })
      if(user){
-         res.send('particapted successfully')
+         res.redirect('/')
      }
     };
   

@@ -39,7 +39,7 @@
           <h4 class=" text-center  text-md my-2" >
              Top Contestants 
           </h4>
-    <div class="row_inner flex justify-center py-1  px-1 border ">
+   <div class="row_inner flex justify-center py-1  px-1 border ">
           <% if(user){ user.forEach((item)=>{%>
             <div class="flex flex-col w-12 mr-1">
             <img src="<%=item.image %>"  class="h-12 w-12  rounded-full"/>
@@ -55,13 +55,8 @@
       <div class="botton mt-3 flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
             <label for="cars" class="mt-2">Choose a Contestant :</label>
-<select name="participant_id" id="participants" class="form-control  mb-2">
-<%if(participants) participants.forEach((participant)=>{%>
-  <option value="<%= participant.google_id%>" class=""><%= participant.first_name%></option>
-  <% })%>
-
-</select>
-              <input type="hidden" name="contest_id" value="<%= contest._id %>"
+            <input type="text" name="participant_id" onChange="search(this)" placeholder="Search Participant"/>
+              <input type="hidden" name="contest_id" value="<%= contest._id %>"/>
               <h4 class="text-start mt-2">
                 Vote for Your favourite contestant
               </h4>
@@ -161,4 +156,12 @@ var x = setInterval(function() {
     document.getElementById("demo").innerHTML = "EXPIRED";
   }
 }, 1000);
+</script>
+
+
+<script>
+const search = function(e){
+console.log('sadjfljsdf')
+console.log(e.target.value)
+}
 </script>

@@ -6,6 +6,7 @@ import db from "../db/db.js";
 const contestSchema = mongoose.Schema({
    name : String,
   expire_date :Date,
+  image : String,
    votes : String
 })
 

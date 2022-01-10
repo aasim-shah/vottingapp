@@ -33,7 +33,7 @@
 <div class="container mx-auto dd">
     <div class="w-42">
         <div class="card h-44 items-center border rounded-md ">
-            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/20220110_234017_0000.png?v=1641838185287" alt="Image" />
+            <img src="<%= contest.image %>" alt="Image" />
         </div>
         <div class="row_images">
           <h4 class=" text-center  text-md my-2" >
@@ -52,16 +52,15 @@
 
       </div>
       
-      <div class="botton mt-3 flex flex-col text-center">
+      <div class="botton  flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
-            <label for="cars" class="mt-2">Choose a Contestant :</label>
-               <div id="search_result" class="font-bold text-xl flex justify-between my-2 text-center"><span id="sr_name"></span><span id="sr_votes" > </span></div>
+               <div id="search_result" class="font-bold text-xl  flex justify-between text-center"><span id="sr_name"></span><span id="sr_votes" > </span></div>
             <input type="hidden" name="participant_id" id="participant_id" />
-            <input type="text" name="" id="search_term"  onChange="search()" placeholder="Search Participant" class="form-control"/>
-            <div class="rounded-md py-1 px-2 bg-gray-300 mt-1 ">Find Participant</div>
+            <input type="text" name="" id="search_term"  onChange="search()" placeholder="Search Participant" class="form-control mt-2"/>
+            <div class="rounded-md py-1 px-2 bg-gray-300 mt-2">Find Participant</div>
               <input type="hidden" name="contest_id" value="<%= contest._id %>"/>
 
-              <h4 class="text-start mt-2">
+              <h4 class="text-start mt-3">
                 Vote for Your favourite contestant
               </h4>
             <button type="submit" class="py-2  btncolor mt-2 text-lg text-white font-bold rounded" style="width:270px">VOTE</button>

@@ -1,3 +1,4 @@
+
 import userModel from "../models/userModel.js";
 import contestModel from "../models/contestModel.js";
 import  Jwt  from 'jsonwebtoken';
@@ -82,6 +83,13 @@ const contests = await contesModel.find()
         res.send(searched)
     }
   
+        
+    async  user_search(req ,res) {
+        const username = req.body.search;
+        console.log(username)
+     const searched = await   userModel.findOne({$text: {$search: `${username}`}});
+        res.send(searched)
+    }
   
   async partipant_video (req ,res) {
     console.log('vidoe uploading')

@@ -55,7 +55,7 @@
       <div class="botton mt-3 flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
             <label for="cars" class="mt-2">Choose a Contestant :</label>
-            <input type="text" name="participant_id" onChange="search(this)" placeholder="Search Participant"/>
+            <input type="text" name="participant_id" id="participant_id" onChange="search()" placeholder="Search Participant"/>
               <input type="hidden" name="contest_id" value="<%= contest._id %>"/>
               <h4 class="text-start mt-2">
                 Vote for Your favourite contestant
@@ -158,10 +158,13 @@ var x = setInterval(function() {
 }, 1000);
 </script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 const search = function(e){
-console.log('sadjfljsdf')
-console.log(e.target.value)
+const val = document.getElementById('participant_id').value
+console.log(val)
+axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
+console.log(res)
+}).catch((e)=> {console.log(e)})
 }
 </script>

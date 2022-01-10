@@ -55,8 +55,10 @@
       <div class="botton mt-3 flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
             <label for="cars" class="mt-2">Choose a Contestant :</label>
-            <input type="text" name="participant_id" id="participant_id" onChange="search()" placeholder="Search Participant"/>
+            <input type="text" name="participant_id" id="participant_id"  onChange="search()" placeholder="Search Participant"/>
               <input type="hidden" name="contest_id" value="<%= contest._id %>"/>
+   <div id="search_result" class="font-bold text-xl text-center"></div>
+
               <h4 class="text-start mt-2">
                 Vote for Your favourite contestant
               </h4>
@@ -162,9 +164,9 @@ var x = setInterval(function() {
 <script>
 const search = function(e){
 const val = document.getElementById('participant_id').value
-console.log(val)
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 console.log(res)
+document.getElementById('participant_id').value = res.data.google_id;
 }).catch((e)=> {console.log(e)})
 }
 </script>

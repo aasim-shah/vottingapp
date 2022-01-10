@@ -85,9 +85,9 @@ const contests = await contesModel.find()
   
         
     async  user_search(req ,res) {
-        const username = req.body.search;
+        const username = req.body.data;
         console.log(username)
-     const searched = await   userModel.findOne({$text: {$search: `${username}`}});
+     const searched = await  userModel.findOne({$text: {$search: `${username}`}});
         res.send(searched)
     }
   

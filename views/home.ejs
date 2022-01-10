@@ -55,9 +55,10 @@
       <div class="botton mt-3 flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
             <label for="cars" class="mt-2">Choose a Contestant :</label>
-               <div id="search_result" class="font-bold text-xl flex justify-between text-center"><span id="sr_name"></span><span id="sr_votes" > </span></div>
+               <div id="search_result" class="font-bold text-xl flex justify-between my-2 text-center"><span id="sr_name"></span><span id="sr_votes" > </span></div>
             <input type="hidden" name="participant_id" id="participant_id" />
             <input type="text" name="" id="search_term"  onChange="search()" placeholder="Search Participant" class="form-control"/>
+            <div class="rounded-md py-1 px-2 bg-gray-300 mt-1 ">Find Participant</div>
               <input type="hidden" name="contest_id" value="<%= contest._id %>"/>
 
               <h4 class="text-start mt-2">
@@ -167,11 +168,16 @@ const search = function(e){
 const val = document.getElementById('search_term').value
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 console.log(res)
+if(res.data == ''){
+document.getElementById('sr_name').innerHTML ="No user Found "; 
+
+}else{
 document.getElementById('participant_id').value = res.data.google_id;
 document.getElementById('search_term').value = res.data.username;
 document.getElementById('sr_name').innerHTML ="Name :"+ res.data.first_name; 
 document.getElementById('sr_votes').innerHTML = 'Votes : ' +  res.data.total_votes;
 
+}
 
 
 }).catch((e)=> {console.log(e)})

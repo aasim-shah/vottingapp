@@ -107,7 +107,8 @@ const contests = await contesModel.find()
         const id = req.body.contest_id;
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
         const participant = await userModel.findOne({google_id : participant_id})
-      const pariticipant_total_votes = participant.total_votes;
+      if(participant == null){res.send('Select a participant First')}
+        const pariticipant_total_votes = participant.total_votes;
         const user_vote = check_voted.voted;
       const votes = await contestModel.findById(id)
         const n = Number(votes.votes)

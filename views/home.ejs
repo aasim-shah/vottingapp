@@ -55,9 +55,10 @@
       <div class="botton mt-3 flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
             <label for="cars" class="mt-2">Choose a Contestant :</label>
-            <input type="text" name="participant_id" id="participant_id"  onChange="search()" placeholder="Search Participant"/>
+               <div id="search_result" class="font-bold text-xl flex justify-between text-center"><span id="sr_name"></span><span id="sr_votes" > </span></div>
+            <input type="hidden" name="participant_id" id="participant_id" />
+            <input type="text" name="" id="search_term"  onChange="search()" placeholder="Search Participant" class="form-control"/>
               <input type="hidden" name="contest_id" value="<%= contest._id %>"/>
-   <div id="search_result" class="font-bold text-xl text-center"></div>
 
               <h4 class="text-start mt-2">
                 Vote for Your favourite contestant
@@ -163,10 +164,16 @@ var x = setInterval(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 const search = function(e){
-const val = document.getElementById('participant_id').value
+const val = document.getElementById('search_term').value
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 console.log(res)
 document.getElementById('participant_id').value = res.data.google_id;
+document.getElementById('search_term').value = res.data.username;
+document.getElementById('sr_name').innerHTML ="Name :"+ res.data.first_name; 
+document.getElementById('sr_votes').innerHTML = 'Votes : ' +  res.data.total_votes;
+
+
+
 }).catch((e)=> {console.log(e)})
 }
 </script>

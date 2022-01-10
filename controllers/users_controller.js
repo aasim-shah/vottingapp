@@ -7,8 +7,7 @@ import contesModel from "../models/contestModel.js";
 import { name } from "ejs";
 
 class users {
-   async home(req ,res) {
-     
+   async home(req ,res) {  
         res.send('users homepage')
     }
    
@@ -63,10 +62,10 @@ class users {
   
 
     async  dashboard_get(req ,res) {
-        const contests = await contesModel.find()
-     const maxVotes = await userModel.find().sort({total_votes : -1}).limit(5)
-    
-       res.render('home' , {user: maxVotes , contests : contests})
+const contests = await contesModel.find()
+    const participants = await userModel.find({isParticipant : true})
+     const maxVotes = await userModel.find({isParticipant : true}).sort({total_votes : -1}).limit(5)
+       res.render('home' , {user: maxVotes , contests : contests , participants})
     }
 
 

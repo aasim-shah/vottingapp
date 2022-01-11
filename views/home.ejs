@@ -54,8 +54,8 @@
       
       <div class="botton  flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
-               <div   class="font-bold text-xl  flex justify-between text-center"><span class="sr_name">asdf</span><span class="sr_votes" >asdfs </span></div>
-            <input type="hidden" name="participant_id" id="participant_id" />
+               <div   class="font-bold text-xl  flex justify-between text-center"><span class="sr_name" id="<%= contest._id %>">asdf</span><span class="sr_votes" >asdfs </span></div>
+            <input type="hidden" name="participant_id" class="participant_id" />
             <input type="text" name=""   onChange="search()" placeholder="Search Participant" class="form-control mt-2 search_term"/>
             <div class="rounded-md py-1 px-2 bg-gray-300 mt-2">Find Participant</div>
               <input type="hidden" name="contest_id" class="contest_id" value="<%= contest._id %>"/>
@@ -120,17 +120,20 @@ var x = setInterval(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 const search = function(e){
-const val = document.getElementById('search_term').value
+const val = document.querySelector('.search_term').value
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 console.log(res)
 if(res.data == ''){
-document.querySelector('sr_name').innerHTML ="No user Found "; 
+let d = document.querySelector('#contests[0]._id')
+
+document.querySelector('.sr_name').innerHTML ="No user Found "; 
+console.log('no data')
 
 }else{
-document.querySelector('participant_id').value = res.data.google_id;
-document.querySelector('search_term').value = res.data.username;
-document.querySelector('sr_name').innerHTML ="Name :"+ res.data.first_name; 
-document.querySelector('sr_votes').innerHTML = 'Votes : ' +  res.data.total_votes;
+document.querySelector('.participant_id').value = res.data.google_id;
+document.querySelector('.search_term').value = res.data.username;
+document.querySelector('.sr_name').innerHTML ="Name :"+ res.data.first_name; 
+document.querySelector('.sr_votes').innerHTML = 'Votes : ' +  res.data.total_votes;
 
 }
 

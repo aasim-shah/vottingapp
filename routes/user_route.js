@@ -125,8 +125,12 @@ router.get('/dashboard' , Tokenauth  , user.dashboard_get)
 router.get('/logout', Tokenauth,  user.logout);
 
 router.post('/projects',Tokenauth , upload.array('uploadedImages', 6),async function(req, res) {
+  const user = await  userModel.findOne({google_id : req.user.google_id})
+  if(user.galary.length < 7){
      const user1 = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {$push : {galary : req.files}})
-  res.redirect('back');
+  res.redirect('back');}else{
+    res.redirect('back')
+  }
 });
 
 router.get('/profile' , Tokenauth, user.profile_get)

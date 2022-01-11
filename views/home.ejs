@@ -84,13 +84,7 @@
 
 
 <%- include('./partials/footer.ejs') %>
-<!-- <script type="text/javascript">
-      var populated = <%-JSON.stringify(contests)%>;
-      for(i=0 ; i< populated.lenght ; i++){
-      console.log(populated[i])
-      }
-</script>
- -->
+
 
 <script>
 // Set the date we're counting down to
@@ -125,14 +119,6 @@ var x = setInterval(function() {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
-let c_id =  document.querySelector(".contest_id").value;
-console.log(c_id)
-const d = c_id.toString();
-console.log(d)
-
-
-
 
 
 const search = function(e){

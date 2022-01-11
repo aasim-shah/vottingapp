@@ -127,14 +127,21 @@ router.get('/logout', Tokenauth,  user.logout);
 router.post('/projects',Tokenauth , upload.array('uploadedImages', 6),async function(req, res) {
   switch(req.files.length) {
   case 1:
-    console.log('1')
+    const img1a = req.files[0].filename
+     const user1 = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {galary_img1 : img1a})
     break;
   case 2:
-   const obj = [
- {filename : req.files[0].filename},
-{     filename : req.files[1].filename}   ]
-     const userobj = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {galary : obj})
+ const img1 = req.files[0].filename
+ const  img2 = req.files[1].filename
+     const user2 = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {galary_img2 : img1 , galary_img3 : img2})
+      break;
+   break;
+  case 2:
+ const img1c = req.files[0].filename
+ const  img2c = req.files[1].filename
+  const  img3c = req.files[2].filename
 
+     const user3 = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {galary_img : img1 , galary_img3 : img2})
       break;
   default:
     const obj_def = {filename : ''}

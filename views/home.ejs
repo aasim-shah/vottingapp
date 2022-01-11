@@ -54,7 +54,11 @@
       
       <div class="botton  flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
-    <div class="container">  <div class=" py-3" id="<%= contest._id %>" ><span class="sr_name" > </span><span class="sr_username" ></span> <span class="sr_votes" > </span> <span class="sr_rank" > </span></div></div>
+    <div class="container">  <div class=" py-3" id="<%= contest._id %>" >
+    <span class="sr_name block" > </span>
+    <span class="sr_username block" ></span>
+    <span class="sr_votes block" > </span> 
+    </div>
    <input type="hidden" name="participant_id" class="participant_id" />
   <input type="text" name=""   onChange="search('<%= contest._id %>')" placeholder="Enter Username" class="form-control rounded-full  mt-2 w-46 search_term"/>
             <div class="rounded-md py-1 px-2 bg-gray-300 mt-2 ">Find Participant</div></div>
@@ -124,10 +128,10 @@ console.log('no data')
 }else{
 document.querySelector('.participant_id').value = res.data.google_id;
 document.querySelector('.search_term').value = res.data.username;
-document.getElementById(e).querySelector('.sr_name').innerHTML ="Name : "+ res.data.first_name; 
-document.getElementById(e).querySelector('.sr_username').innerHTML ="username : "+ res.data.username; 
+document.getElementById(e).querySelector('.sr_name').innerHTML =""+ res.data.first_name; 
+document.getElementById(e).querySelector('.sr_username').innerHTML = res.data.username; 
 
-document.getElementById(e).querySelector('.sr_votes').innerHTML = 'Votes : ' +  res.data.total_votes;
+document.getElementById(e).querySelector('.sr_votes').innerHTML = '' +  res.data.total_votes;
 
 }
 

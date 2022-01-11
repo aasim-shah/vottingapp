@@ -9,11 +9,9 @@
       <div class"  my-2" style="text-align:center;">
         <%= user.first_name %>
       </div>
-      <div class="flex ">
-   <span>VOTES : </span>
-            <% contest.forEach((item) => { %>
-        <span><%= item.votes %> , </span>
-        <% }) %>
+      <div class"  my-2" style="text-align:center;"><%= user.username %></div>
+    <div class"  my-2" style="text-align:center;">
+          <%= user.total_votes %>
       </div>
     </div>
   </div>
@@ -69,7 +67,7 @@
   <input type="submit" value="UPLOAD IMAGES" class="py-1 px-8 mt-2 btncolor rounded-md">
 </form>
 </div>
-      <div class="container bg-gray-400 py-2 my-3"><video controls>
+      <div class="container bg-gray-400 py-2 my-3"><video  controls>
   <source src="<%= user.video %>" type="video/mp4">
 </video> </div>
       <div class="text-center container my-2"> 

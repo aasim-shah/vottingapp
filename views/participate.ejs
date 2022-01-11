@@ -1,5 +1,6 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
+<p class=" mx-2 text-xl my-2 text-center">Fill complete info </p>
 <div class="container w-72 flex items-end  my-3">
 <% if(!participant){%>
   <form action="/user/participate" method="post" enctype="multipart/form-data">
@@ -17,9 +18,16 @@
       <input type="text" class="form-control mb-2" name="state" placeholder=" State ">
       <input type="hidden" class="form-control mb-2" name="contest_id" placeholder="" value="<%=contest %>">
       <input type="text" class="form-control mb-2" name="instagram_username" placeholder=" Instagram Username ">
-      <input type="text" class="form-control mb-2" name="username" placeholder=" Galaxy Username ">
+      <input type="text" class="form-control " name="username" placeholder=" Galaxy Username ">
+      <p class=" mx-2 text-sm mb-2">*Create your Galaxy Username </p>
       <input type="file" class="form-control" name="image">
-      <button type="submit" class="btn btn-sm btn-success text-dark mt-3">Participate</button>
+      <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+  
+</label>
+</div>
+      <button type="submit" class="btncolor btn w-64  mx-2 btn-block  mt-3">Participate</button>
   </form>
   <% }else{%>
    <h4 class="text-lg my-4 text-red-400 font-bold ">You Already Have Participated </h4>

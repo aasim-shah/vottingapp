@@ -55,8 +55,8 @@
       <div class="botton  flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
                <div   class="font-bold text-xl  flex justify-between text-center"><span class="sr_name" id="<%= contest._id %>">asdf</span><span class="sr_votes" >asdfs </span></div>
-            <input type="hidden" name="participant_id" class="participant_id" />
-            <input type="text" name=""   onChange="search()" placeholder="Search Participant" class="form-control mt-2 search_term"/>
+   <input type="hidden" name="participant_id" class="participant_id" />
+    <input type="text" name=""   onChange="search()" placeholder="Search Participant" class="form-control mt-2 search_term"/>
             <div class="rounded-md py-1 px-2 bg-gray-300 mt-2">Find Participant</div>
               <input type="hidden" name="contest_id" class="contest_id" value="<%= contest._id %>"/>
 
@@ -84,13 +84,13 @@
 
 
 <%- include('./partials/footer.ejs') %>
- <script>
-var test = '<%- JSON.parse(contests) %>';
-console.log(test)
-  
+<!-- <script type="text/javascript">
+      var populated = <%-JSON.stringify(contests)%>;
+      for(i=0 ; i< populated.lenght ; i++){
+      console.log(populated[i])
+      }
 </script>
-
-
+ -->
 
 <script>
 // Set the date we're counting down to

@@ -119,14 +119,20 @@ var x = setInterval(function() {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+
+let c_id =  document.querySelector(".contest_id").value;
+console.log(c_id)
+const d = c_id.toString()
+console.log('ajja')
+
+
 const search = function(e){
 const val = document.querySelector('.search_term').value
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 console.log(res)
 if(res.data == ''){
-let d = document.querySelector('#contests[0]._id')
 
-document.querySelector('.sr_name').innerHTML ="No user Found "; 
+document.get().innerHTML ="No user Found "; 
 console.log('no data')
 
 }else{

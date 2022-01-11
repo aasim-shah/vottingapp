@@ -84,6 +84,12 @@
 
 
 <%- include('./partials/footer.ejs') %>
+ <script>
+var test = '<%- JSON.parse(contests) %>';
+console.log(test)
+  
+</script>
+
 
 
 <script>
@@ -124,6 +130,9 @@ let c_id =  document.querySelector(".contest_id").value;
 console.log(c_id)
 const d = c_id.toString();
 console.log(d)
+
+
+
 
 
 const search = function(e){

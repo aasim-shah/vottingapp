@@ -1,18 +1,26 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
-<div class="container w-72 flex items-center " style="height:68vh;">
 
-    <div class="" >
+<div class="">
+<div class="banner_image flex justify-center mt-2">
+
+  <video width="1000px" loop="true" autoplay="autoplay"  class="my-2" muted>
+  <source src="onevideo.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+</div>
       <p class="text-lg text-center font-bold">
-        Vote Your favourite contestant or Join the contest
-      </p><a href="/user/auth/google" >
-  <img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/btn_google_signin_dark_pressed_web%402x.png?v=1641142348348" />
+        JOIN NOW
+  </p><a href="/user/auth/google" >
+  <img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/btn_google_signin_dark_pressed_web%402x.png?v=1641142348348"  class="w-11/12 mx-auto"/>
       </a>
+  <p class="mx-3">CONTINUE WITH GOOGLE</p>
   </div>
     
 </div>
     
-
+<div>
 <%- include('./partials/footer.ejs') %>
 
 

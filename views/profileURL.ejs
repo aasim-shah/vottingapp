@@ -4,7 +4,11 @@
   .btn-bg{
     background-color:#FE3C72;
   }
-
+   #url:focus { 
+    outline: none !important;
+    border-color: #111820;
+    box-shadow: 0 0 10px #719ECE;
+ }
 </style>
 <div class="ohk  pb-2">
    
@@ -83,7 +87,6 @@
    
    
     </div>
-<textarea rows="1" cols="30" id="url"></textarea>
 
       <div class="container">
         <form action="/user/voted" method="post">
@@ -93,6 +96,8 @@
                <button type='submit' id="voteBtn" class="px-3 py-1 btn-bg text-xl tracking-wider rounded-full  text-white font-bold mb-2 " >VOTE NOW</button>
            </div>
         </form>
+        <textarea rows="1" cols="43" id="url" class=" mx-auto text-center" style="border:none;outline:none; display:none;"></textarea>
+
         <div class=' flex justify-center	 shadow-lg shadow-black	 rounded-full py-2 mt-2'>
           <a class="mr-6 " href="whatsapp://send?text=https://voting-app-demo.glitch.me/<%= user.username %>"><img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/whatsapp.png?v=1640802270659" class="w-6" /></a>
           
@@ -124,6 +129,7 @@
         function Copy() 
         {
             var Url = document.getElementById("url");
+            Url.style.display = 'block';
             Url.value = window.location.href;
             Url.focus();
             Url.select();  

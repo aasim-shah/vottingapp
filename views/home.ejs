@@ -60,8 +60,8 @@
     <span class="sr_votes block" > </span> 
     </div>
    <input type="hidden" name="participant_id" class="participant_id" />
-  <input type="text" name=""   onChange="search('<%= contest._id %>')" placeholder="Enter Username" class="form-control rounded-full  mt-2 w-46 search_term"/>
-            <div class="rounded-md py-1 px-2 bg-gray-300 mt-2 ">Find Participant</div></div>
+  <input type="text" name=""   placeholder="Enter Username" class="form-control rounded-full  mt-2 w-46 search_term"/>
+            <div class="rounded-md py-1 px-2 bg-gray-300 mt-2 " onClick="search('<%= contest._id %>')" >Find Participant</div></div>
   <input type="hidden" name="contest_id" class="contest_id" value="<%= contest._id %>"/>
             <button type="submit" class="py-2  btncolor  mt-2 text-sm  text-white font-bold rounded" style="width:270px">VOTE FOR YOUR FAV CONTESTANT</button>
             </form>
@@ -120,6 +120,7 @@ var x = setInterval(function() {
 
 const search = function(e){
 const val = document.querySelector('.search_term').value;
+
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 if(res.data == ''){
 document.getElementById(e).innerHTML ="No user Found "; 
@@ -130,9 +131,8 @@ document.querySelector('.participant_id').value = res.data.google_id;
 document.querySelector('.search_term').value = res.data.username;
 document.getElementById(e).querySelector('.sr_name').innerHTML =""+ res.data.first_name; 
 document.getElementById(e).querySelector('.sr_username').innerHTML = res.data.username; 
-
 document.getElementById(e).querySelector('.sr_votes').innerHTML = '' +  res.data.total_votes;
-
+val = '';
 }
 
 

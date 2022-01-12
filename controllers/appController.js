@@ -17,13 +17,9 @@ class apps {
         const username = req.params.username;
         console.log(username)
         const user = await userModel.findOne({username : username})
-        if(user){if(user.isParticipant){
-        res.render('profileURL' , {user : user})
-    }else{
-        res.render('profileURL' , {user : ''})
-    }}
-    else{
-        
+       if(user){
+                 res.render('profileURL' , {user : user})
+       }else{
         res.render('profileURL' , {user : ''})
         }
     }

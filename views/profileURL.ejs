@@ -85,19 +85,10 @@
       <div class="container bg-gray-400 py-2 my-3"><video  controls>
   <source src="<%= user.video %>" type="video/mp4">
 </video> </div>
+
       
  </div>
- 
-<% }else{ %>
-<div class="container mx-auto py-8">
-  <div class="text-center text-3xl mx-2" >
-    
-  You haven't been part of a contest yet
-</div>
 
-<div class="flex flex-col my-5">
-<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md text-center mt-1 mx-1 py-2"  id="home_redirect">GO TO HOME PAGE TO JOIN CONTEST</a>
-</div>
 </div>
    
    
@@ -129,8 +120,15 @@
       </div>
   </div>
   
-  
-  
+</div>
+
+
+<% }else{ %>
+<div class="container mx-auto py-8">
+  <div class="text-center text-3xl mx-2" >
+  No user found for this username try another one
+</div>
+<% } %>
 
 <%- include('./partials/footer.ejs') %>
 

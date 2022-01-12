@@ -120,7 +120,6 @@ var x = setInterval(function() {
 
 const search = function(e){
 const val = document.querySelector('.search_term').value;
-
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 if(res.data == ''){
 document.getElementById(e).innerHTML ="No user Found "; 
@@ -132,7 +131,6 @@ document.querySelector('.search_term').value = res.data.username;
 document.getElementById(e).querySelector('.sr_name').innerHTML =""+ res.data.first_name; 
 document.getElementById(e).querySelector('.sr_username').innerHTML = res.data.username; 
 document.getElementById(e).querySelector('.sr_votes').innerHTML = '' +  res.data.total_votes;
-val = '';
 }
 
 

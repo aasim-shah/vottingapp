@@ -28,28 +28,87 @@
 }
 </style>
 <div class="ohk  pb-2">
-    <% if(user){ %> 
-    <div class=" mx-auto">
-        <div class="btn-bg"> 
-      <div class="btn-bg text-white container  rounded border">
-        <div class="flex py-4 px-2">
-          <div class='col-6 flex flex-col items-center  place-content-center '>
-        <p class="text-lg font-bold ">
-          <%= user.name %>
-        </p> 
-             <p class="text-lg font-bold "> VOTES :
-          <%= user.total_votes %>
-        </p>
-        <p class="text-sm italic "> <%= user.username %>
-        </p>
-          </div>
-          <div class="col-6">
-                    <img src="<%= user.image %>" class="rounded-md w-36 h-36"  />
-
-          </div>
-        </div>
-       
+   
+   <% if(user.isParticipant){ %>
+<div class="" >
+  <div class="flex flex-row justify-center">
+    <div class="img flex flex-col ">
+      <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
+      <div class"  my-2" style="text-align:center;">
+        <%= user.first_name %>
       </div>
+      <div class"  my-2" style="text-align:center;"><%= user.username %></div>
+    <div class"  my-2" style="text-align:center;">
+          <%= user.total_votes %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <div class="w-11/12 my-3 mx-auto px-2 py-3 border rounded">
+      <div class="grid grid-cols-3 gap-1 " >
+      <div class="bg-gray-300  py-1 rounded  text-center" style="min-height:70px;">
+     <% if(user.galary[0]){%>
+            <img src="<%= user.galary[0].filename  %>" class="w-20  mx-auto " />
+    <% }%></div>
+    <div class="bg-gray-300  py-1 rounded  text-center">
+     <% if(user.galary[1]){%>
+            <img src="<%= user.galary[1].filename  %>" class="w-20  mx-auto " />
+    <% }%></div>
+    
+     <div class="bg-gray-300  py-1 rounded  text-center">
+     <% if(user.galary[2]){%>
+            <img src="<%= user.galary[2].filename  %>" class="w-20  mx-auto " />
+    <% }%></div>
+    
+     <div class="bg-gray-300  py-1 rounded  text-center">
+     <% if(user.galary[3]){%>
+            <img src="<%= user.galary[3].filename  %>" class="w-20  mx-auto " />
+    <% }%></div>
+    
+     <div class="bg-gray-300  py-1 rounded  text-center">
+     <% if(user.galary[4]){%>
+            <img src="<%= user.galary[4].filename  %>" class="w-20  mx-auto " />
+    <% }%></div>
+    
+     <div class="bg-gray-300   py-1 rounded  text-center" style="min-height:70px;">
+     <% if(user.galary[5]){%>
+            <img src="<%= user.galary[5].filename  %>" class="w-20  mx-auto " />
+    <% }%></div>
+         
+      </div>
+      </div>
+
+
+</div>
+      <div class="container bg-gray-400 py-2 my-3"><video  controls>
+  <source src="<%= user.video %>" type="video/mp4">
+</video> </div>
+      
+ </div>
+ 
+<% }else{ %>
+<div class="container mx-auto py-8">
+  <div class="text-center text-3xl mx-2" >
+    
+  You haven't been part of a contest yet
+</div>
+
+<div class="flex flex-col my-5">
+<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md text-center mt-1 mx-1 py-2"  id="home_redirect">GO TO HOME PAGE TO JOIN CONTEST</a>
+</div>
+</div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     </div>
       <div class="container">
         <form action="/user/voted" method="post">
@@ -72,10 +131,6 @@
   
   
   
-    <% }else{ %>
-        <h1 class="font-bold mt-12 text-3xl text-center">NO User Found !</h1>
-         <% } %>
-</div>
 
 <%- include('./partials/footer.ejs') %>
 

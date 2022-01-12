@@ -4,36 +4,15 @@
   .btn-bg{
     background-color:#FE3C72;
   }
-  #voteBtn{
-          backface-visibility: hidden;
-    -webkit-animation-name: shake;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: 3s;
-  }
-  
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
+
 </style>
 <div class="ohk  pb-2">
    
    <% if(user.isParticipant){ %>
-<div class="" >
-  <div class="flex flex-row justify-center">
+<div class=" mt-3" >
+  <div class="flex flex-row justify-center ">
     <div class="img flex flex-col ">
-      <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
+      <img src="<%= user.image %>" class=" bg-yellow-300 rounded-full" style="width:7rem; height : 7rem ;" />
       <div class"  my-2" style="text-align:center;">
         <%= user.first_name %>
       </div>
@@ -47,6 +26,7 @@
 
 
  <div class="w-11/12 my-3 mx-auto px-2 py-3 border rounded">
+ <div class="text-sm font-bold">GALLERY </div>
       <div class="grid grid-cols-3 gap-1 " >
       <div class="bg-gray-300  py-1 rounded  text-center" style="min-height:70px;">
      <% if(user.galary[0]){%>
@@ -82,7 +62,9 @@
 
 
 </div>
-      <div class="container bg-gray-400 py-2 my-3"><video  controls>
+      <div class="container bg-gray-400 py-2 my-3">
+       <div class="text-sm font-bold ">Introductory Video </div>
+      <video  controls>
   <source src="<%= user.video %>" type="video/mp4">
 </video> </div>
 
@@ -107,16 +89,21 @@
            <div class="flex flex-col container my-2" >
              
                <button type='submit' id="voteBtn" class="px-3 py-1 btn-bg text-xl tracking-wider rounded-full  text-white font-bold mb-2 " >VOTE NOW</button>
-               <a  href="/" class="px-3 py-1 btn-bg rounded-full text-xl  tracking-wider	 text-center text-white font-bold ml-1" >PARTICIPATE NOW</a>
            </div>
         </form>
         <div class=' flex justify-center	 shadow-lg shadow-black	 rounded-full py-2 mt-2'>
           <a class="mr-6 " href="whatsapp://send?text=https://voting-app-demo.glitch.me/<%= user.username %>"><img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/whatsapp.png?v=1640802270659" class="w-6" /></a>
+          
+          
           <a class="mr-6 " href="whatsapp://send?text=https://voting-app-demo.glitch.me/<%= user.username %>"><img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/whatsapp.png?v=1640802270659" class="w-6" /></a>
+          
           <a class="mr-6 " href="whatsapp://send?text=https://voting-app-demo.glitch.me/<%= user.username %>"><img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/whatsapp.png?v=1640802270659" class="w-6" /></a>
+          
           <a class="mr-6 " href="whatsapp://send?text=https://voting-app-demo.glitch.me/<%= user.username %>"><img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/whatsapp.png?v=1640802270659" class="w-6" /></a>
 
       </div>
+      <div class="block mt-4">
+      <a  href="/" class="px-3 block py-1 btn-bg rounded-full text-xl  tracking-wider	 text-center text-white font-bold ml-1" >PARTICIPATE NOW</a></div>
       </div>
   </div>
   
@@ -131,13 +118,3 @@
 <% } %>
 
 <%- include('./partials/footer.ejs') %>
-
-
-<script>
-$(document).ready(function() {
-    setInterval(function() {
-        $(".shk").css("animation", "shakeMe");
-    }, 1000);
-});
-
-</script>

@@ -30,42 +30,42 @@
  <div class="w-11/12 my-3 mx-auto px-2 py-3 border rounded">
  <div class="text-sm font-bold">GALLERY </div>
       <div class="grid grid-cols-3 gap-1 " >
-      <div class="bg-gray-300  py-1 rounded  text-center" style="min-height:70px;">
+      <div class="border py-1 rounded  text-center" style="min-height:70px;">
      <% if(user.galary[0]){%>
             <img src="<%= user.galary[0].filename  %>" class="w-20 h-20 mx-auto " />
     <% }else{%>
            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
          <% }%></div>
          
-    <div class="bg-gray-300  py-1 rounded  text-center">
+    <div class="border  py-1 rounded  text-center">
      <% if(user.galary[1]){%>
             <img src="<%= user.galary[1].filename  %>" class="w-20 h-20 mx-auto " />
     <% }else{%>
            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
          <% }%></div>
     
-     <div class="bg-gray-300  py-1 rounded  text-center">
+     <div class="border  py-1 rounded  text-center">
      <% if(user.galary[2]){%>
             <img src="<%= user.galary[2].filename  %>" class="w-20 h-20 mx-auto " />
     <% }else{%>
            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
          <% }%></div>
     
-     <div class="bg-gray-300  py-1 rounded  text-center">
+     <div class="border py-1 rounded  text-center">
      <% if(user.galary[3]){%>
             <img src="<%= user.galary[3].filename  %>" class="w-20 h-20 mx-auto " />
   <% }else{%>
            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
          <% }%></div>
     
-     <div class="bg-gray-300  py-1 rounded  text-center">
+     <div class="border  py-1 rounded  text-center">
      <% if(user.galary[4]){%>
             <img src="<%= user.galary[4].filename  %>" class="w-20 h-20 mx-auto " />
    <% }else{%>
            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
          <% }%></div>
     
-     <div class="bg-gray-300   py-1 rounded  text-center" style="min-height:70px;">
+     <div class="border   py-1 rounded  text-center" style="min-height:70px;">
      <% if(user.galary[5]){%>
             <img src="<%= user.galary[5].filename  %>" class="w-20 h-20 mx-auto " />
     <% }else{%>
@@ -76,9 +76,9 @@
 
 
 </div>
-      <div class="container bg-gray-400 py-2 my-3">
+      <div class="container bg-gray-100 py-2 my-3">
        <div class="text-sm font-bold ">Introductory Video </div>
-      <video  controls>
+      <video  controls class="w-full mx-auto">
   <source src="<%= user.video %>" type="video/mp4">
 </video> </div>
 
@@ -102,12 +102,12 @@
         <form action="/user/voted" method="post">
               <input type="hidden" name="participant_id" Placeholder="search" value="<%= user.google_id %>"/>
            <div class="flex flex-col container my-2" >
-             
                <button type='submit' id="voteBtn" class="px-3 py-1 btn-bg text-xl tracking-wider rounded-full  text-white font-bold mb-2 " >VOTE NOW</button>
            </div>
         </form>
         <textarea rows="1" cols="43" id="url" class=" mx-auto text-center" style="border:none;outline:none; display:none;"></textarea>
-
+        
+             <p class="text-center" >support { user name } By sharing on</p>
         <div class=' flex justify-center	 shadow-lg shadow-black	 rounded-full py-2 mt-2'>
           <a class="mr-6 " href="whatsapp://send?text=https://voting-app-demo.glitch.me/<%= user.username %>"><img src="https://cdn.glitch.me/b99f4b77-dfd6-402b-bc23-05376313ecbc/whatsapp.png?v=1640802270659" class="w-6" /></a>
           

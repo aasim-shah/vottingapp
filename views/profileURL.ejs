@@ -15,11 +15,11 @@
   <div class="flex flex-row justify-center ">
     <div class="img flex flex-col ">
       <img src="<%= user.image %>" class=" bg-yellow-300 rounded-full" style="width:7rem; height : 7rem ;" />
-      <div class"my-2" style="text-align:center; background:gainsboro !important; margin-top:7px; ">
+      <div class"my-2" style="text-align:center; background:#dcdcdc6b !important; margin-top:7px; ">
         <%= user.first_name %>
       </div>
-      <div class"  my-2" style="text-align:center; background:gainsboro !important; margin-top:7px; "><%= user.username %></div>
-    <div class"  my-2" style="text-align:center; background:gainsboro !important; margin-top:7px; ">
+      <div class"  my-2" style="text-align:center; background:#dcdcdc6b !important; margin-top:7px; "><%= user.username %></div>
+    <div class"  my-2" style="text-align:center; background:#dcdcdc6b !important; margin-top:7px; ">
           <%= user.total_votes %>
       </div>
     </div>
@@ -32,31 +32,31 @@
       <div class="grid grid-cols-3 gap-1 " >
       <div class="bg-gray-300  py-1 rounded  text-center" style="min-height:70px;">
      <% if(user.galary[0]){%>
-            <img src="<%= user.galary[0].filename  %>" class="w-20  mx-auto " />
+            <img src="<%= user.galary[0].filename  %>" class="w-20 h-20 mx-auto " />
     <% }%></div>
     <div class="bg-gray-300  py-1 rounded  text-center">
      <% if(user.galary[1]){%>
-            <img src="<%= user.galary[1].filename  %>" class="w-20  mx-auto " />
+            <img src="<%= user.galary[1].filename  %>" class="w-20 h-20 mx-auto " />
     <% }%></div>
     
      <div class="bg-gray-300  py-1 rounded  text-center">
      <% if(user.galary[2]){%>
-            <img src="<%= user.galary[2].filename  %>" class="w-20  mx-auto " />
+            <img src="<%= user.galary[2].filename  %>" class="w-20 h-20 mx-auto " />
     <% }%></div>
     
      <div class="bg-gray-300  py-1 rounded  text-center">
      <% if(user.galary[3]){%>
-            <img src="<%= user.galary[3].filename  %>" class="w-20  mx-auto " />
+            <img src="<%= user.galary[3].filename  %>" class="w-20 h-20 mx-auto " />
     <% }%></div>
     
      <div class="bg-gray-300  py-1 rounded  text-center">
      <% if(user.galary[4]){%>
-            <img src="<%= user.galary[4].filename  %>" class="w-20  mx-auto " />
+            <img src="<%= user.galary[4].filename  %>" class="w-20 h-20 mx-auto " />
     <% }%></div>
     
      <div class="bg-gray-300   py-1 rounded  text-center" style="min-height:70px;">
      <% if(user.galary[5]){%>
-            <img src="<%= user.galary[5].filename  %>" class="w-20  mx-auto " />
+            <img src="<%= user.galary[5].filename  %>" class="w-20 h-20 mx-auto " />
     <% }%></div>
          
       </div>

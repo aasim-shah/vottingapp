@@ -55,11 +55,13 @@
       <div class="botton  flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
     <div class="container">  
-    <div class=" py-3" id="<%= contest._id %>" >
-    <image src=""  id="image" class="w-24 h-24"/>
-    <span class="sr_name block" > </span>
-    <span class="sr_username block" ></span>
-    <span class="sr_votes block" > </span> 
+    <div class=" py-3 border py-2 flex justify-around px-2" style="display:none;" id="<%= contest._id %>" >
+      <div><image src=""  id="image" class="w-24 h-24"/></div>
+      <div class="">
+      <span class="sr_name block font-bold" > </span>
+      <span class="sr_username block font-bold" ></span>
+      <span class="sr_votes block" > </span> 
+      </div>
     </div>
    <input type="hidden" name="participant_id" class="participant_id" />
   <input type="text" name=""   placeholder="Enter Username" class="form-control rounded-full  mt-2 w-46 search_term"/>
@@ -119,21 +121,22 @@ var x = setInterval(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 
-
 const search = function(e){
 const val = document.querySelector('.search_term').value;
 axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
 if(res.data == ''){
+document.getElementById(e).style.display= 'flex';
 document.getElementById(e).innerHTML ="No user Found "; 
 console.log('no data')
 
 }else{
+document.getElementById(e).style.display= 'flex';
 document.querySelector('.participant_id').value = res.data.google_id;
 document.querySelector('.search_term').value = res.data.username;
-document.querySelector('.image').src= res.data.image;
+document.querySelector('#image').src= res.data.image;
 document.getElementById(e).querySelector('.sr_name').innerHTML =""+ res.data.first_name; 
 document.getElementById(e).querySelector('.sr_username').innerHTML = res.data.username; 
-document.getElementById(e).querySelector('.sr_votes').innerHTML = '' +  res.data.total_votes;
+document.getElementById(e).querySelector('.sr_votes').innerHTML = '' +  res.data.total_votes + " votes";
 }
 
 

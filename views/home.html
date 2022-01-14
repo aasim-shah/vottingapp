@@ -54,7 +54,9 @@
       
       <div class="botton  flex flex-col text-center">
             <form action="/user/voted" method="post" class="">
-    <div class="container">  <div class=" py-3" id="<%= contest._id %>" >
+    <div class="container">  
+    <div class=" py-3" id="<%= contest._id %>" >
+    <image src=""  id="image" class="w-24 h-24"/>
     <span class="sr_name block" > </span>
     <span class="sr_username block" ></span>
     <span class="sr_votes block" > </span> 
@@ -128,6 +130,7 @@ console.log('no data')
 }else{
 document.querySelector('.participant_id').value = res.data.google_id;
 document.querySelector('.search_term').value = res.data.username;
+document.querySelector('.image').src= res.data.image;
 document.getElementById(e).querySelector('.sr_name').innerHTML =""+ res.data.first_name; 
 document.getElementById(e).querySelector('.sr_username').innerHTML = res.data.username; 
 document.getElementById(e).querySelector('.sr_votes').innerHTML = '' +  res.data.total_votes;

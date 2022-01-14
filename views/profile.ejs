@@ -13,11 +13,11 @@ color:white;
   <div class="flex flex-row justify-center">
     <div class="img flex flex-col ">
       <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
-      <div class"  my-2" style="text-align:center;">
+      <div class" fontdd my-3" style="text-align:center;">
         <%= user.first_name %> <%= user.last_name %>
       </div>
-      <div class"  my-2" style="text-align:center;">@<%= user.username %></div>
-    <div class"  my-2" style="text-align:center;">
+      <div class" fontdd my-2 font-bold" style="text-align:center;">@<%= user.username %></div>
+    <div class"fontdd  my-2" style="text-align:center;">
           <%= user.total_votes %> Votes
       </div>
     </div>
@@ -26,7 +26,7 @@ color:white;
 
 
  <div class="w-11/12 my-3 mx-auto px-2 py-3  rounded">
-  <div class="text-sm font-bold text-center">
+  <div class="text-sm font-bold text-center fontdd">
  GALLARY
   </div>
 
@@ -89,7 +89,7 @@ color:white;
   
 <form action="/user/projects" method="post" enctype="multipart/form-data">
   <input type="file" id="uploadedImages" onChange="readURL(this)" name="uploadedImages" value="UPLOAD" multiple class="form-control">
-  <div class="fontd  text-center" style="font-size:12px;">
+  <div class="fontdd  text-center" style="font-size:12px;">
 * Upload pictures to show on your profile
 We recommend upload minimum 6 pictures
   </div>
@@ -97,7 +97,7 @@ We recommend upload minimum 6 pictures
 </form>
 </div>
       <div class="container bg-gray-100  py-1 my-3">
-             <div class="text-sm font-bold text-center">Introductory Video </div>
+             <div class="text-sm fontdd font-bold text-center">Introductory Video </div>
       <video  controls  class="w-full mx-auto " >
   <source src="<%= user.video %>" type="video/mp4">
 </video> </div>
@@ -107,7 +107,7 @@ We recommend upload minimum 6 pictures
      
 <form action="/user/uploadvideo" method="post" enctype="multipart/form-data">
   <input type="file" name="video" value="video" accept="video/mp4/mkv"  class="form-control">
-   <div class="fontd container  text-center" style="font-size:12px;">
+   <div class="fontdd container  text-center" style="font-size:12px;">
  * Make a video telling about yourself
 So your supporters know more about you
 </div>
@@ -131,13 +131,13 @@ So your supporters know more about you
  
 <% }else{ %>
 <div class="container mx-auto py-8">
-  <div class="text-center text-3xl mx-2" >
+  <div class="text-center text-3xl mx-2 fontdd" >
     
   You haven't been part of a contest yet
 </div>
 
 <div class="flex flex-col my-5">
-<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md text-center mt-1 mx-1 py-2"  id="home_redirect">GO TO HOME PAGE TO JOIN CONTEST</a>
+<a href="/" class="py-1 px-2 text-white font-bold btncolor rounded-md text-center mt-1 mx-1 py-2"  id="home_redirect fontdd">GO TO HOME PAGE TO JOIN CONTEST</a>
 </div>
 </div>
 

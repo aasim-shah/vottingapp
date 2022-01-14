@@ -9,14 +9,14 @@ color:white;
 
 
 <% if(user.isParticipant){ %>
-<div class="" >
+<div class="mt-3" >
   <div class="flex flex-row justify-center">
-    <div class="img flex flex-col ">
+    <div class="img flex mb-2 flex-col ">
       <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
-      <div class" fontdd my-3" style="text-align:center;">
+      <div class" fontdd my-3" style="text-align:center; margin-top:8px; font-weight:600;font-family:inherit;">
         <%= user.first_name %> <%= user.last_name %>
       </div>
-      <div class" fontdd my-2 font-bold" style="text-align:center;">@<%= user.username %></div>
+      <div class" fontdd my-2 font-bold" style="text-align:center; font-weight:700; font-family:inherit;">@<%= user.username %></div>
     <div class"fontdd  my-2" style="text-align:center;">
           <%= user.total_votes %> Votes
       </div>

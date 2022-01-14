@@ -108,11 +108,11 @@ So your supporters know more about you
       
  </div>
  
- <div class="container mx-auto border">
- <input type="text" readonly class="form-control my-3" value="jsadfjlsjflsa"/>
+ <div class="container mx-auto ">
+ <input type="text" id="url" readonly class="form-control my-3 px-1" value="https://voting-app-demo.glitch.me/<%= user.username%>"/>
 <div class="flex justify-center">
-<a class="mr-6 btncolor px-4" href="" target="_blank">VIEW</button>
- <button class="mr-6 btncolor px-4"  value="Copy Url" onclick="Copy();">SHARE</button>
+<a class="mr-6 btncolor rounded-md px-4" href="https://voting-app-demo.glitch.me/<%= user.username%>" target="_blank">VIEW</a>
+ <button class="mr-6 btncolor px-4 rounded-md"  value="Copy Url" onclick="Copy();">SHARE</button>
 
 </div> 
  </div>
@@ -215,8 +215,6 @@ function readURL(input) {
         function Copy() 
         {
             var Url = document.getElementById("url");
-            Url.style.display = 'block';
-            Url.value = window.location.href;
             Url.focus();
             Url.select();  
             document.execCommand("Copy");

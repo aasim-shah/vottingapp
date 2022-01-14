@@ -13,12 +13,12 @@
    <% if(user.isParticipant){ %>
 <div class="mt-3" >
   <div class="flex flex-row justify-center">
-    <div class="img flex mb-2 flex-col w-24  ">
-      <img src="<%= user.image %>" class="w-full h-24  bg-yellow-300 rounded-full" />
-      <div class=" fontdd w-32" style="text-align:center; margin-top:8px; font-weight:600;">
+    <div class="img flex mb-2 flex-col w-44  ">
+      <img src="<%= user.image %>" class=" h-24 mx-auto w-24 bg-yellow-300 rounded-full" />
+      <div class=" fontdd " style="text-align:center; margin-top:8px; font-weight:600;">
         <%= user.first_name %> <%= user.last_name %>
       </div>
-      <div class=" fontdd  font-bold" style="text-align:center; font-weight:700;">@<%= user.username %></div>
+      <div class=" fontdd font-bold" style="text-align:center; font-weight:700;">@<%= user.username %></div>
     <div class="fontdd  my-2" style="text-align:center;">
           <%= user.total_votes %> Votes
       </div>
@@ -132,6 +132,9 @@ window.open(url, 'sharer', 'toolbar=0,status=0,width=648,height=395">
   </div>
   
 </div>
+
+
+
 
 
 <% }else{ %>

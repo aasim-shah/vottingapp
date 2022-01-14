@@ -2,9 +2,8 @@
 <%- include('./partials/navbar.ejs') %>
 
 <style>
-.fontd{
-font-family: 'Helvetica 55 Roman', sans-serif;
-
+.btncolor{
+color:white;
 }
 </style>
 
@@ -15,9 +14,9 @@ font-family: 'Helvetica 55 Roman', sans-serif;
     <div class="img flex flex-col ">
       <img src="<%= user.image %>" class="w-24 h-24 bg-yellow-300 rounded-full" />
       <div class"  my-2" style="text-align:center;">
-        <%= user.first_name %>
+        <%= user.first_name %> <%= user.last_name %>
       </div>
-      <div class"  my-2" style="text-align:center;"><%= user.username %></div>
+      <div class"  my-2" style="text-align:center;">@<%= user.username %></div>
     <div class"  my-2" style="text-align:center;">
           <%= user.total_votes %> Votes
       </div>
@@ -87,12 +86,13 @@ font-family: 'Helvetica 55 Roman', sans-serif;
    <img class="preview5" src="#" alt="your image" height="100" />
     </div>
 
-  <div class="text-sm fontd font-bold text-center">
-Upload pictures to show on your profile
-We recommend upload minimum 6 pictures
-  </div>
+  
 <form action="/user/projects" method="post" enctype="multipart/form-data">
   <input type="file" id="uploadedImages" onChange="readURL(this)" name="uploadedImages" value="UPLOAD" multiple class="form-control">
+  <div class="fontd  text-center" style="font-size:12px;">
+* Upload pictures to show on your profile
+We recommend upload minimum 6 pictures
+  </div>
   <input type="submit" value="UPLOAD IMAGES" class="py-1 px-8 mt-2 btncolor rounded-md">
 </form>
 </div>
@@ -102,14 +102,15 @@ We recommend upload minimum 6 pictures
   <source src="<%= user.video %>" type="video/mp4">
 </video> </div>
       <div class="text-center container my-2"> 
-<div class="text-sm font-bold text-center">
- Make a video telling about yourself
-So your supporters know more about you
-</div>
+ 
 
      
 <form action="/user/uploadvideo" method="post" enctype="multipart/form-data">
   <input type="file" name="video" value="video" accept="video/mp4/mkv"  class="form-control">
+   <div class="fontd container  text-center" style="font-size:12px;">
+ * Make a video telling about yourself
+So your supporters know more about you
+</div>
   <input type="submit" value="UPLOAD VIDEO" class="py-1 px-8 mt-2 btncolor rounded-md">
 </form>
 </div>

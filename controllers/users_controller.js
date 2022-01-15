@@ -57,9 +57,11 @@ class users {
   async  google_login2(req ,res) {
         const user = await userModel.findOne({ google_id : req.user.google_id})
             const token = Jwt.sign({google_id : req.user.google_id} , 'mysupersecret')
-            res.cookie('jwt_Token' , token )
-            res.redirect('..');
-      }
+              res.cookie('jwt_Token' , token )
+                 const redirect = req.session.oauth2return || '/';
+        delete req.session.oauth2return;
+        res.redirect(redirect);
+        }
   
   
 

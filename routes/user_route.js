@@ -102,7 +102,13 @@ const Tokenauth = async (req ,res , next)=>{
 
 
 
-router.get('/auth/google',
+router.get('/auth/google', (req, res, next) => {
+
+        // Save the url of the user's current page so the app can redirect back to it after authorization
+        if (req.query.return) {req.session.oauth2return = req.query.return;}
+        console.log(req.url)
+        next();
+    },
   passport.authenticate('google', { scope:
       [  'profile' ] }
 ));

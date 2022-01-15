@@ -128,15 +128,49 @@ const contests = await contesModel.find()
         }
         }
   
+  
+  
+  
+      async  voted_post_url(req ,res) {
+      const participant_id = req.body.participant_id;
+                  console.log(participant_id)
+
+      if(req.user.google_id == participant_id){
+        res.send('You Can\'t Vote Your Self')
+      }
+        const check_voted = await userModel.findOne({google_id : req.user.google_id})
+        const participant = await userModel.findOne({google_id : participant_id})
+      if(participant == null){res.send('Select a participant First')}
+        const pariticipant_total_votes = participant.total_votes;
+        const user_vote = check_voted.voted;
+      const votes = await contestModel.findById(id)
+        const n = Number(votes.votes)
+        if(user_vote){
+           res.send('<h3 class="text-center">you Already voted </h3>')
+        }else{
+            const new_votes = await contestModel.findByIdAndUpdate(id , {votes : n+1})
+            const user = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
+                voted : true  
+            })
+            const participant_voted = await userModel.findOneAndUpdate({google_id : participant_id} , {
+             total_votes :pariticipant_total_votes + 1
+            })
+            res.redirect('back')
+        }
+        }
+  
+  
+  
+  
 
     async participate_get(req ,res) {
       const contest_id = req.params.id;
       const user = await userModel.findOne({google_id :req.user.google_id})
-  if(user.isParticipant){
-      res.render('participate' , {contest : contest_id , participant: true}  )
-  }else{
-          res.render('participate' , {contest : contest_id , participant : false} )
-  }
+          if(user.isParticipant){
+              res.render('participate' , {contest : contest_id , participant: true}  )
+          }else{
+                  res.render('participate' , {contest : contest_id , participant : false} )
+          }
     }
 
   async participate_post (req, res)  {
@@ -153,7 +187,8 @@ const contests = await contesModel.find()
         age : req.body.age,
         image : req.file.originalname,
         isParticipant : true,
-        $push : {contests : req.body.contest_id}
+        contest_id : req.body.contest_id,
+        // $push : {contests : req.body.contest_id}
     })
      if(user){
          res.redirect('/user/profile')
@@ -161,17 +196,7 @@ const contests = await contesModel.find()
     };
   
   
-//  async participated_post (req, res)  {
-//     console.log(req.body.contest_id)
-//     const user  = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
-//         $push : {contests : req.body.contest_id}
-//     })
-//      if(user){
-//          res.send('particapted successfully')
-//      }
-//     };  
-  
-  
+
   
   
     async  logout(req ,res) {

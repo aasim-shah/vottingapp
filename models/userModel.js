@@ -12,6 +12,7 @@ const userSchema = mongoose.Schema({
     video : String,
     phone :String,
     city :String,
+    contest_id : String,
     contests : [],
     galary:[],
     state :String,

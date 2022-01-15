@@ -16,6 +16,7 @@ class users {
         const Token = await req.user.Authuser()
         res.cookie('jwt_Token' , Token )
         console.log(req.user)
+      console.log('login post')
          res.redirect('/user/dashboard')
     }
   

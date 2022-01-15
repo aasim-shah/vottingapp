@@ -4,7 +4,7 @@ import contestModel from "../models/contestModel.js";
 import  Jwt  from 'jsonwebtoken';
 import cookieParser from "cookie-parser";
 import contesModel from "../models/contestModel.js";
-
+import path from 'path'
 import { name } from "ejs";
 
 class users {
@@ -58,7 +58,7 @@ class users {
         const user = await userModel.findOne({ google_id : req.user.google_id})
             const token = Jwt.sign({google_id : req.user.google_id} , 'mysupersecret')
             res.cookie('jwt_Token' , token )
-             res.redirect('/user/dashboard')
+            res.redirect('..');
       }
   
   

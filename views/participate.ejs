@@ -1,8 +1,8 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
-<p class=" mx-2 text-xl my-2 text-center">Fill complete info </p>
 <div class="container w-72 flex items-end  my-3">
 <% if(!participant){%>
+<p class=" mx-2 text-xl my-2 text-center">Fill complete info </p>
   <form action="/user/participate" method="post" enctype="multipart/form-data">
       <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
       <input type="text" class="form-control mb-2" name="last_name" placeholder=" Last Name ">

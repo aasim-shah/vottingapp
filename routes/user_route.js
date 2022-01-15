@@ -111,7 +111,7 @@ router.get( '/auth/google/callback',
           successReturnToOrRedirect: '/user',
         failureRedirect: '/auth/google/failure',
 }) ); // user.google_login
-,user.google_login2?
+// ,user.google_login2
 
 
 

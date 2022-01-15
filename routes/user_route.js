@@ -4,6 +4,8 @@ import passport  from 'passport';
 import  Jwt from 'jsonwebtoken';
 import session from 'express-session';
 import multer from "multer";
+import connectEnsureLogin from 'connect-ensure-login';
+
 
 import  userModel from '../models/userModel.js';
 import passportLocal from 'passport-local';
@@ -107,7 +109,8 @@ router.get('/auth/google',
 
 router.get( '/auth/google/callback',
     passport.authenticate( 'google', {
-        failureRedirect: '/auth/google/failure'
+        failureRedirect: '/auth/google/failure',
+        successReturnToOrRedirect : '/user'
 }),user.google_login2 ); // user.google_login
 
 
@@ -142,5 +145,5 @@ router.post('/search' ,  user.user_search)
 router.post('/uploadvideo', Tokenauth , upload.single('video'),  user.partipant_video)
 router.post('/participate',Tokenauth ,upload.single('image'),  user.participate_post)
 
-router.get('/participate/:id' , Tokenauth, user.participate_get)
+router.get('/participate/:id' ,connectEnsureLogin.ensureLoggedIn(), Tokenauth, user.participate_get)
 export default router;

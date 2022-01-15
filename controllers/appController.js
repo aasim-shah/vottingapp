@@ -14,10 +14,11 @@ class apps {
         res.send('sajdflsjdlfjsalo okay')
     }
     async  username_get(req ,res){
-        const username = req.params.username;
-         if (!req.session.returnTo) {let req.session.url = '' }
-        console.log(req.session.returnTo)
-      console.log('orignal url')
+      let ref_url = req.get('Referer');
+      const username = req.params.username;
+         if (!req.session.url) { req.session.url = ref_url}
+        console.log(req.session.url)
+      console.log(req.session.url)
         const user = await userModel.findOne({username : username})
        if(user){
                  res.render('profileURL' , {user : user})

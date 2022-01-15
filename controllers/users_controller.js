@@ -9,8 +9,7 @@ import { name } from "ejs";
 
 class users {
    async home(req ,res) {  
-        res.send('users homepage')
-       // console.log(req.session.returnTo)
+        res.redirect('/')
     }
    
     async  login_post(req ,res) {
@@ -59,7 +58,8 @@ class users {
         const user = await userModel.findOne({ google_id : req.user.google_id})
             const token = Jwt.sign({google_id : req.user.google_id} , 'mysupersecret')
               res.cookie('jwt_Token' , token )
-                res.redirect('/user/dashboard')
+            
+                res.redirect('/')
         }
   
   
@@ -168,8 +168,7 @@ const contests = await contesModel.find()
   
   
 
-    async participate_get(req ,res) {
-               
+    async participate_get(req ,res) {      
       const contest_id = req.params.id;
       const user = await userModel.findOne({google_id :req.user.google_id})
           if(user.isParticipant){

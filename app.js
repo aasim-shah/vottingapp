@@ -6,15 +6,14 @@ import apps from './controllers/appController.js'
 import db from './db/db.js'
 const app = express()
 const port = process.env.port || 8000
-import session from 'express-session'
+import connectEnsureLogin from 'connect-ensure-login';
 
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
+
+app.get('/settings',connectEnsureLogin.ensureLoggedIn('/user/login'),
+  function(req, res) {
+    res.render('settings', { user: req.user });
+  });
 
 app.use('/user' , userRoute)
 app.use(express.static('./public/images'))

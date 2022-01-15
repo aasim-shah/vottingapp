@@ -41,8 +41,6 @@ class users {
              res.redirect('/user/dashboard')
         }else{
             const token = Jwt.sign({google_id : req.user.id} , 'mysupersecret')
-            
-    console.log(token)
             const d= new userModel({
                 google_id : req.user.id,
                 tokens : [{token : token}]
@@ -58,7 +56,7 @@ class users {
         const user = await userModel.findOne({ google_id : req.user.google_id})
             const token = Jwt.sign({google_id : req.user.google_id} , 'mysupersecret')
               res.cookie('jwt_Token' , token )
-            
+                  console.log(req.session.url)
                 res.redirect('/')
         }
   

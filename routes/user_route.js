@@ -108,9 +108,10 @@ router.get('/auth/google', passport.authenticate('google', { scope:
 
 router.get( '/auth/google/callback',
     passport.authenticate( 'google', {
+          successReturnToOrRedirect: '/user',
         failureRedirect: '/auth/google/failure',
-}),user.google_login2 ); // user.google_login
-
+}) ); // user.google_login
+,user.google_login2?
 
 
 

@@ -136,6 +136,7 @@ router.post('/projects',Tokenauth , upload.array('uploadedImages', 6),async func
 router.get('/profile' , Tokenauth, user.profile_get)
 
 router.post('/voted' , Tokenauth, user.voted_post)
+router.post('/url/voted' , Tokenauth, user.voted_post_url)
 router.post('/admin/search' , Tokenauth,isAdmin, user.admin_search)
 router.post('/search' ,  user.user_search)
 router.post('/uploadvideo', Tokenauth , upload.single('video'),  user.partipant_video)

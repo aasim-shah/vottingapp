@@ -133,22 +133,22 @@ const contests = await contesModel.find()
   
       async  voted_post_url(req ,res) {
       const participant_id = req.body.participant_id;
-                  console.log(participant_id)
-
       if(req.user.google_id == participant_id){
         res.send('You Can\'t Vote Your Self')
       }
         const check_voted = await userModel.findOne({google_id : req.user.google_id})
         const participant = await userModel.findOne({google_id : participant_id})
+        const contest_id = participant.contest_id;
+        console.log(contest_id)
       if(participant == null){res.send('Select a participant First')}
         const pariticipant_total_votes = participant.total_votes;
         const user_vote = check_voted.voted;
-      const votes = await contestModel.findById(id)
+      const votes = await contestModel.findById(contest_id)
         const n = Number(votes.votes)
         if(user_vote){
            res.send('<h3 class="text-center">you Already voted </h3>')
         }else{
-            const new_votes = await contestModel.findByIdAndUpdate(id , {votes : n+1})
+            const new_votes = await contestModel.findByIdAndUpdate(contest_id , {votes : n+1})
             const user = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
                 voted : true  
             })

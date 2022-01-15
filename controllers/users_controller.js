@@ -10,6 +10,7 @@ import { name } from "ejs";
 class users {
    async home(req ,res) {  
         res.send('users homepage')
+       // console.log(req.session.returnTo)
     }
    
     async  login_post(req ,res) {
@@ -168,7 +169,7 @@ const contests = await contesModel.find()
   
 
     async participate_get(req ,res) {
-                  console.log(req.originalUrl)
+               
       const contest_id = req.params.id;
       const user = await userModel.findOne({google_id :req.user.google_id})
           if(user.isParticipant){

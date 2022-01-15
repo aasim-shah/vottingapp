@@ -15,7 +15,8 @@ class apps {
     }
     async  username_get(req ,res){
         const username = req.params.username;
-        console.log(username)
+         // if (!req.session.returnTo) {let returnTo = req.session.returnTo }
+      console.log('orignal url')
         const user = await userModel.findOne({username : username})
        if(user){
                  res.render('profileURL' , {user : user})

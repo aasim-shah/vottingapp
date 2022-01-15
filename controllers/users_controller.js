@@ -58,9 +58,7 @@ class users {
         const user = await userModel.findOne({ google_id : req.user.google_id})
             const token = Jwt.sign({google_id : req.user.google_id} , 'mysupersecret')
               res.cookie('jwt_Token' , token )
-                 const redirect = req.session.oauth2return || '/';
-        delete req.session.oauth2return;
-        res.redirect(redirect);
+                res.redirect('/user/dashboard')
         }
   
   
@@ -170,6 +168,7 @@ const contests = await contesModel.find()
   
 
     async participate_get(req ,res) {
+                  console.log(req.originalUrl)
       const contest_id = req.params.id;
       const user = await userModel.findOne({google_id :req.user.google_id})
           if(user.isParticipant){

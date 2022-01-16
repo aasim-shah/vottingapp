@@ -1,0 +1,26 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navbar.ejs') %>
+
+
+<div class="container flex flex-col mt-6" >
+   <% if(posts){posts.forEach(post => {%>
+    <div class="card mt-2" >
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 container text-muted flex justify-between"><span class=""><%= post.name %></span><span class="">date</span></h6>
+          <img class="card-img-top" src="<%=  post.image %>" alt="Card image cap">
+          <div class="text-end mr-3" style="margin-top: -32px;">
+                <form action="/user/url/voted" method="post">
+                        <input type="hidden" value="<%= post.user_id %>" name="participant_id">
+                    <button type="submit" class="btncolor text-center py-1 px-2 rounded ">VOTE ME</button>
+                </form>
+          </div>
+        </div>
+      </div>
+    <% })%>
+    <% }%>
+</div>
+    
+<div class="" style="margin-top:24%;">
+<%- include('./partials/footer.ejs') %>
+</div>
+

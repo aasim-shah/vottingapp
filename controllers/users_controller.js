@@ -1,4 +1,3 @@
-
 import userModel from "../models/userModel.js";
 import contestModel from "../models/contestModel.js";
 import  Jwt  from 'jsonwebtoken';
@@ -6,61 +5,28 @@ import cookieParser from "cookie-parser";
 import contesModel from "../models/contestModel.js";
 import path from 'path'
 import { name } from "ejs";
+import postModel from "../models/postsModel.js";
 
 class users {
    async home(req ,res) {  
         res.redirect('/')
     }
    
-    async  login_post(req ,res) {
-        const Token = await req.user.Authuser()
-        res.cookie('jwt_Token' , Token )
-        console.log(req.user)
-      console.log('login post')
-         res.redirect('/user/dashboard')
-    }
-  
+   
    async profile_get(req ,res) {
-     const google_id = req.user.google_id;
-     const user = await userModel.findOne({google_id})
+     const phone = req.user.phone;
+     const user = await userModel.findOne({phone})
+     const posts = await postModel.find({user_id : req.user.phone})
      let contest = await contestModel.find({_id : {$in : user.contests}})
-
-         res.render('profile' , {user , contest})
+    console.log(posts)
+         res.render('profile' , {user , contest , posts})
     }
   
-    async  login_get(req ,res) {
-      res.render('login')
-    }
+  
+ 
+  
+  
 
-    async  google_login(req ,res) {
-        const user = await userModel.findOne({ google_id : req.user.id})
-        console.log(req.user)
-        if(user){
-            const token = Jwt.sign({google_id : req.user.id} , 'mysupersecret')
-            res.cookie('jwt_Token' , token )
-             res.redirect('/user/dashboard')
-        }else{
-            const token = Jwt.sign({google_id : req.user.id} , 'mysupersecret')
-            const d= new userModel({
-                google_id : req.user.id,
-                tokens : [{token : token}]
-            })
-            const user_added = await d.save()
-            res.redirect('/user/login')
-        }
-
-      }
-  
-  
-  async  google_login2(req ,res) {
-        const user = await userModel.findOne({ google_id : req.user.google_id})
-            const token = Jwt.sign({google_id : req.user.google_id} , 'mysupersecret')
-              res.cookie('jwt_Token' , token )
-                  console.log(req.session.url)
-                res.redirect('/')
-        }
-  
-  
 
     async  dashboard_get(req ,res) {
 const contests = await contesModel.find()
@@ -93,7 +59,7 @@ const contests = await contesModel.find()
   
   async partipant_video (req ,res) {
     console.log('vidoe uploading')
-    const user = await userModel.findOneAndUpdate({google_id : req.user.google_id}, {video : req.file.originalname})
+    const user = await userModel.findOneAndUpdate({phone : req.user.phone}, {video : req.file.originalname})
   res.redirect('back')
   }
 
@@ -104,11 +70,11 @@ const contests = await contesModel.find()
       const participant_id = req.body.participant_id;
                   console.log(participant_id)
 
-      if(req.user.google_id == participant_id){
+      if(req.user.phone == participant_id){
         res.send('You Can\'t Vote Your Self')
       }
-        const check_voted = await userModel.findOne({google_id : req.user.google_id})
-        const participant = await userModel.findOne({google_id : participant_id})
+        const check_voted = await userModel.findOne({phone : req.user.phone})
+        const participant = await userModel.findOne({phone : participant_id})
       if(participant == null){res.send('Select a participant First')}
         const pariticipant_total_votes = participant.total_votes;
         const user_vote = check_voted.voted;
@@ -118,10 +84,10 @@ const contests = await contesModel.find()
            res.send('<h3 class="text-center">you Already voted </h3>')
         }else{
             const new_votes = await contestModel.findByIdAndUpdate(id , {votes : n+1})
-            const user = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
+            const user = await userModel.findOneAndUpdate({phone : req.user.phone} , {
                 voted : true  
             })
-            const participant_voted = await userModel.findOneAndUpdate({google_id : participant_id} , {
+            const participant_voted = await userModel.findOneAndUpdate({phone : participant_id} , {
              total_votes :pariticipant_total_votes + 1
             })
             res.redirect('back')
@@ -133,16 +99,12 @@ const contests = await contesModel.find()
   
       async  voted_post_url(req ,res) {
       const participant_id = req.body.participant_id;
-      if(req.user.google_id == participant_id){
+      if(req.user.phone == participant_id){
         res.send('You Can\'t Vote Your Self')
-      }
-        console.log(req.user.google_id)
-        console.log(participant_id)
-        const check_voted = await userModel.findOne({google_id : req.user.google_id})
-        const participant = await userModel.findOne({google_id : participant_id})
+      } 
+        const check_voted = await userModel.findOne({phone : req.user.phone})
+        const participant = await userModel.findOne({phone : participant_id})
         const contest_id = participant.contest_id;
-        console.log(contest_id)
-        console.log(participant)
       if(participant == null){res.send('Select a participant First')}
         const pariticipant_total_votes = participant.total_votes;
         const user_vote = check_voted.voted;
@@ -152,10 +114,10 @@ const contests = await contesModel.find()
            res.send('<h3 class="text-center">you Already voted </h3>')
         }else{
             const new_votes = await contestModel.findByIdAndUpdate(contest_id , {votes : n+1})
-            const user = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
+            const user = await userModel.findOneAndUpdate({phone : req.user.phone} , {
                 voted : true  
             })
-            const participant_voted = await userModel.findOneAndUpdate({google_id : participant_id} , {
+            const participant_voted = await userModel.findOneAndUpdate({phone : participant_id} , {
              total_votes :pariticipant_total_votes + 1
             })
             res.redirect('back')
@@ -168,7 +130,7 @@ const contests = await contesModel.find()
 
     async participate_get(req ,res) {      
       const contest_id = req.params.id;
-      const user = await userModel.findOne({google_id :req.user.google_id})
+      const user = await userModel.findOne({phone :req.user.phone})
           if(user.isParticipant){
               res.render('participate' , {contest : contest_id , participant: true}  )
           }else{
@@ -178,13 +140,12 @@ const contests = await contesModel.find()
 
   async participate_post (req, res)  {
     console.log(req.body.contest_id)
-    const user  = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {
+    const user  = await userModel.findOneAndUpdate({phone : req.user.phone} , {
         first_name : req.body.first_name,
         last_name : req.body.last_name,
         marital_status : req.body.marital_status,
         city : req.body.city,
         state : req.body.state,
-        phone : req.body.phone,
         instagram_username : req.body.instagram_username,
       username : req.body.username,
         age : req.body.age,

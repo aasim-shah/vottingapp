@@ -1,0 +1,26 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navbar.ejs') %>
+
+<div class="">
+<div class="banner_image flex justify-center mt-2">
+
+  <video width="1000px" loop="true" autoplay="autoplay"  class="my-2" muted>
+  <source src="onevideo.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+</div>
+
+<div class="container w-72 flex items-end mt-6" >
+    <form action="/get/otp" method="post">
+        <input type="text" class="border-gray-900 border-b-2 px-2 py-2 w-64 w-68" placeholder="Username" name="reg_phone" id=""  value="<%= reg_user.phone %>">
+       <div class="d-flex justify-content-center my-4">
+        <button type="submit" class="font-bold text-white text-lg px-3 bg-gray-800 rounded-full">GET OTP</button>
+       </div>
+    </form>
+</div>
+    
+<div class="" style="margin-top:24%;">
+<%- include('./partials/footer.ejs') %>
+</div>
+

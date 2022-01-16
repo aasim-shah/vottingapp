@@ -8,12 +8,12 @@ const userSchema = mongoose.Schema({
     last_name :String,
     age :Number,
     marital_status :String,
-    first_name :String,
     video : String,
-    phone :String,
+    phone :Number,
     city :String,
     contest_id : String,
-    contests : [],
+    verified : Boolean,
+    otp: String,
     galary:[],
     state :String,
     instagram_username :String,
@@ -29,6 +29,13 @@ const userSchema = mongoose.Schema({
         token : String,
     }]
 })
+
+userSchema.methods.Authuser = async function(){
+    const token = jwt.sign({_id : this.id} , 'mysupersecret')
+    this.tokens = this.tokens.concat({token : token})
+    await this.save()
+    return token;
+}
 
 
 userSchema.index({name: 'text', username: 'text'});

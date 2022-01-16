@@ -1,34 +1,23 @@
 import  express, { urlencoded }  from 'express';
 import users from '../controllers/users_controller.js'
-import passport  from 'passport';
-import  Jwt from 'jsonwebtoken';
-import session from 'express-session';
 import multer from "multer";
-import connectEnsureLogin from 'connect-ensure-login';
-
-
 import  userModel from '../models/userModel.js';
-import passportLocal from 'passport-local';
-import passportGoogle from 'passport-google-oauth2'
 import cookieParser from 'cookie-parser';
-const googleAuth = passportGoogle.Strategy
-const local = passportLocal.Strategy
+import postModel from '../models/postsModel.js';
+import auth from '../middlewares/auth.js';
+import Jimp from 'jimp'
+const userAuth =new  auth();
+const Tokenauth = userAuth.Tokenauth
+const isAdmin = userAuth.isAdmin
 const router = express.Router()
 router.use(urlencoded({extended : false}))
 router.use(cookieParser())
 
 
 const user = new users()
-router.use(session({
-    secret: 'sdfsadfsdfasdf cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
-  }))
-router.use(express.json())
-router.use(passport.initialize());
-router.use(passport.session());
 
+
+router.use(express.json())
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -41,99 +30,49 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-const isAdmin = async function(req, res, next) {
-  if (req.isAuthenticated()) {
-    if (req.user.isAdmin) {
-        console.log("isAdmin");
-      return next();
-    } else {
-      console.log(req.user)
-      console.log('not admin');    
-     res.redirect('/user/login')
-    }
-  }}
-
-
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function(id, done) {
-  userModel.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
-passport.use(new googleAuth({
-  clientID:     '771092605828-t9d8cb8pcdpa167rklqkp40pu8jj917u.apps.googleusercontent.com',
-  clientSecret: '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',
-  callbackURL: "https://voting-app-demo.glitch.me/user/auth/google/callback",
-  passReqToCallback   : true
-},
- function(request, accessToken, refreshToken, profile, done) {
-    userModel.findOne({ google_id : profile.id },async function (err, user) {
-      if(user == null ){
-        const user  = await  userModel.create({google_id : profile.id})
-        return done( err ,  user)
-      }
-      return done(err, user);
-    });
-  }
-));
-
-
-  
-
-//jwt verfication 
- 
-const Tokenauth = async (req ,res , next)=>{
- try {
-  const token = req.cookies.jwt_Token
-  const verfiy =  Jwt.verify(token , 'mysupersecret')
-  const verfified_user = await userModel.findOne({google_id : verfiy.google_id})
-  req.user = verfified_user
-  next()
- } catch (error) {
-   console.log(error)
-   res.redirect('/user/login')
- }
-} 
-
-
-
-
-router.get('/auth/google', passport.authenticate('google', { scope:
-      [  'profile' ] }
-));
-
-router.get( '/auth/google/callback',
-    passport.authenticate( 'google', {
-          successReturnToOrRedirect: '/user',
-        failureRedirect: '/auth/google/failure',
-}) ); // user.google_login
-// ,user.google_login2
-
-
 
 
 
 router.get('/', user.home);
 router.get('/admin' ,Tokenauth,isAdmin , user.admin_get)
-router.get('/login', user.login_get);
-router.post('/login', passport.authenticate('local', { failureRedirect: 'login' }),
-user.login_post
-);
+
 router.get('/dashboard' , Tokenauth  , user.dashboard_get)
 router.get('/logout', Tokenauth,  user.logout);
 
-router.post('/projects',Tokenauth , upload.array('uploadedImages', 6),async function(req, res) {
-  const user = await  userModel.findOne({google_id : req.user.google_id})
-  if(user.galary.length < 6){
-     const user1 = await userModel.findOneAndUpdate({google_id : req.user.google_id} , {$push : {galary : req.files}})
-  res.redirect('back');}else{
-    res.redirect('back')
-  }
+router.post('/images',Tokenauth , upload.single('image') ,async function(req, res) {
+  const user = await  userModel.findOne({phone : req.user.phone})
+  let data  = new postModel({
+    user_id : req.user.phone,
+    name : req.user.first_name,
+    image : req.file.originalname
+  })
+  const data_saved  =await data.save()
+  res.redirect('/user/image/' + data_saved._id)
 });
+
+
+router.get('/image/:post' , async(req ,res)=> {
+  const id = req.params.post
+  console.log(id)
+  const image =( await postModel.findById(id)).image
+  
+  const pathh =  'public/images/'+image
+  Jimp.read(pathh)
+  .then(lenna => {
+    return lenna
+      .resize(600 , 320) // resize
+      .quality(60) // set JPEG quality
+      .write('./public/images/'+ 'jimp'+image); // save
+  })
+  .catch(err => {
+    console.error(err);
+  });
+  let updatedImg = await postModel.findByIdAndUpdate(id , { image : 'jimp'+image})
+res.redirect('/user/profile')
+})
+
+
+
 
 router.get('/profile' , Tokenauth, user.profile_get)
 

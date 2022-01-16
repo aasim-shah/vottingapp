@@ -1,8 +1,8 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navbar.ejs') %>
-<div class="container w-72 flex items-end  my-3">
 <% if(!participant){%>
-<p class=" mx-2 text-xl my-2 text-center">Fill complete info </p>
+  <p class=" mx-2 text-xl my-2 text-center">Fill complete info </p>
+  <div class="container w-72 flex items-end  my-3">
   <form action="/user/participate" method="post" enctype="multipart/form-data">
       <input type="text" class="form-control mb-2" name="first_name" placeholder=" First Name ">
       <input type="text" class="form-control mb-2" name="last_name" placeholder=" Last Name ">
@@ -13,7 +13,6 @@
         <label for="divorced">Divorced </label>
     <input type="radio" name="marital_status" value="divorced" id="divorced">
       <input type="text" class="form-control mb-2" name="age" placeholder=" AGE ">
-      <input type="text" class="form-control mb-2" name="phone" placeholder="Phone Number ">
       <input type="text" class="form-control mb-2" name="city" placeholder=" City ">
       <input type="text" class="form-control mb-2" name="state" placeholder=" State ">
       <input type="hidden" class="form-control mb-2" name="contest_id" placeholder="" value="<%=contest %>">

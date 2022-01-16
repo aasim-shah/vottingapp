@@ -32,63 +32,58 @@ color:white;
 
 
       <div class="grid grid-cols-3 gap-1 " >
-      <div class=" py-1 rounded  border text-center" style="min-height:70px;">
-     <% if(user.galary[0]){%>
-            <img src="<%= user.galary[0].filename  %>" class="w-20  h-20 mx-auto " />
+      <div class="border   py-1 rounded  text-center" style="min-height:70px;">
+        <% if(posts[0]){%>
+               <img src="<%= posts[0].image  %>" class="w-20 h-20 mx-auto " />
+      <% }else{%>
+              <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
+            <% }%>
+    </div>
+    <div class="border   py-1 rounded  text-center" style="min-height:70px;">
+      <% if(posts[1]){%>
+             <img src="<%= posts[1].image  %>" class="w-20 h-20 mx-auto " />
     <% }else{%>
-           <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
-         <% }%></div>
-         
-    <div class="border py-1 rounded  text-center">
-     <% if(user.galary[1]){%>
-            <img src="<%= user.galary[1].filename  %>" class="w-20 h-20 mx-auto " />
-   <% }else{%>
-           <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
-         <% }%></div>
-    
-     <div class="border  py-1 rounded  text-center">
-     <% if(user.galary[2]){%>
-            <img src="<%= user.galary[2].filename  %>" class="w-20 h-20 mx-auto " />
+            <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
+          <% }%>
+  </div>
+  <div class="border   py-1 rounded  text-center" style="min-height:70px;">
+    <% if(posts[2]){%>
+           <img src="<%= posts[2].image  %>" class="w-20 h-20 mx-auto " />
   <% }else{%>
-           <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
-         <% }%></div>
-    
-     <div class="border  py-1 rounded  text-center">
-     <% if(user.galary[3]){%>
-            <img src="<%= user.galary[3].filename  %>" class="w-20 h-20 mx-auto " />
-   <% }else{%>
-           <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
-         <% }%></div>
-    
-     <div class="border py-1 rounded  text-center">
-     <% if(user.galary[4]){%>
-            <img src="<%= user.galary[4].filename  %>" class="w-20 h-20 mx-auto " />
-    <% }else{%>
-           <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
-         <% }%></div>
-    
-     <div class="border   py-1 rounded  text-center" style="min-height:70px;">
-     <% if(user.galary[5]){%>
-            <img src="<%= user.galary[5].filename  %>" class="w-20 h-20 mx-auto " />
-   <% }else{%>
-           <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
-         <% }%></div>
-         
+          <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
+        <% }%>
+</div>
+<div class="border   py-1 rounded  text-center" style="min-height:70px;">
+  <% if(posts[3]){%>
+         <img src="<%= posts[3].image  %>" class="w-20 h-20 mx-auto " />
+<% }else{%>
+        <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
+      <% }%>
+</div>
+<div class="border   py-1 rounded  text-center" style="min-height:70px;">
+  <% if(posts[4]){%>
+         <img src="<%= posts[4].image  %>" class="w-20 h-20 mx-auto " />
+<% }else{%>
+        <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
+      <% }%>
+</div>
+<div class="border   py-1 rounded  text-center" style="min-height:70px;">
+  <% if(posts[5]){%>
+         <img src="<%= posts[5].image  %>" class="w-20 h-20 mx-auto " />
+<% }else{%>
+        <img src="https://cdn.glitch.global/b99f4b77-dfd6-402b-bc23-05376313ecbc/user.png?v=1642098618413" class="w-20 h-20 mx-auto " />
+      <% }%>
+</div>
       </div>
       </div>
 <div class="text-center container my-2"> 
 <div class="text-center">
    <img class="preview" src="#" alt="your image 1"   height="100" />
-   <img class="preview1" src="#" alt="your image"   height="100" />
-   <img class="preview2" src="#" alt="your image"   height="100" />
-   <img class="preview3" src="#" alt="your image"   height="100" />
-   <img class="preview4" src="#" alt="your image"   height="100" />
-   <img class="preview5" src="#" alt="your image" height="100" />
     </div>
 
   
-<form action="/user/projects" method="post" enctype="multipart/form-data">
-  <input type="file" id="uploadedImages" onChange="readURL(this)" name="uploadedImages" value="UPLOAD" multiple class="form-control">
+<form action="/user/images" method="post" enctype="multipart/form-data">
+  <input type="file" id="uploadedImages" onChange="readURL(this)" name="image" value="UPLOAD" multiple class="form-control">
   <div class="fontdd  text-center" style="font-size:12px;">
 * Upload pictures to show on your profile
 We recommend upload minimum 6 pictures
@@ -157,14 +152,8 @@ So your supporters know more about you
 
 <script type="text/javascript">
  document.querySelector(".preview").style.display="none";
-  document.querySelector(".preview1").style.display="none";
- document.querySelector(".preview2").style.display="none";
- document.querySelector(".preview3").style.display="none";
- document.querySelector(".preview4").style.display="none";
- document.querySelector(".preview5").style.display="none";
 
 function readURL(input) {
-    if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
          document.querySelector(".preview").style.display="block";
@@ -172,51 +161,6 @@ function readURL(input) {
         }
         reader.readAsDataURL(input.files[0]);
     }
-    if (input.files && input.files[1]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-         document.querySelector(".preview1").style.display="block";
-   document.querySelector('.preview1').src=e.target.result;
-        }
-        reader.readAsDataURL(input.files[1]);
-    }
-    if (input.files && input.files[2]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-         document.querySelector(".preview2").style.display="block";
-   document.querySelector('.preview2').src=e.target.result;
-        }
-        reader.readAsDataURL(input.files[2]);
-    }
-    if (input.files && input.files[3]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-         document.querySelector(".preview3").style.display="block";
-
-   document.querySelector('.preview3').src=e.target.result;
-        }
-        reader.readAsDataURL(input.files[3]);
-    }
-    if (input.files && input.files[4]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-         document.querySelector(".preview4").style.display="block";
-   document.querySelector('.preview4').src=e.target.result;
-        }
-        reader.readAsDataURL(input.files[4]);
-    }
-    if (input.files && input.files[5]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-         document.querySelector(".preview5").style.display="block";
-   document.querySelector('.preview5').src=e.target.result;
-        }
-        reader.readAsDataURL(input.files[5]);
-    }
-   
-     
-}
-
   
 </script>
     

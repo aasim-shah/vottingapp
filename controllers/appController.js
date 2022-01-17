@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js";
 import contesModel from "../models/contestModel.js";
-
+import postModel from "../models/postsModel.js";
 
 
 class apps {
@@ -16,10 +16,12 @@ class apps {
     async  username_get(req ,res){
       const username = req.params.username;
         const user = await userModel.findOne({username : username})
-       if(user){
-                 res.render('profileURL' , {user : user})
+        if(user){
+        const phone = user.phone;
+        const posts = await postModel.find({user_id : phone}).sort({createdAt : -1}).limit(6)
+                 res.render('profileURL' , {user : user , posts : posts})
        }else{
-        res.render('profileURL' , {user : ''})
+        res.render('profileURL' , {user : '' , phone : ''})
         }
     }
 }

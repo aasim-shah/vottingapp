@@ -1,4 +1,5 @@
 import  express, { urlencoded }  from 'express';
+const app = express()
 import userRoute from './routes/user_route.js'
 import apps from './controllers/appController.js'
 import db from './db/db.js'
@@ -6,19 +7,26 @@ import connectEnsureLogin from 'connect-ensure-login';
 import session from 'express-session';
 import bcrypt, { hash } from 'bcrypt'
 import passport from 'passport'
+import cors from 'cors'
 import userModel from './models/userModel.js';
 import LocalStrategy from 'passport-local'
 import cookieParser from 'cookie-parser';
 import axios from 'axios'
+import moment from 'moment';
 import  Jwt from 'jsonwebtoken';
 import auth from './middlewares/auth.js';
 import postModel from './models/postsModel.js';
+import { createServer } from "http";
+import { Server } from "socket.io";
+const httpServer = createServer(app);
+const io = new Server(httpServer, { /* options */ });
+
+
 const userAuth =new  auth();
 const Tokenauth = userAuth.Tokenauth
 
-const app = express()
 const port = process.env.port || 8000
-
+app.use(cors())
 
 
 app.use(urlencoded({extended : false}))
@@ -63,6 +71,17 @@ passport.serializeUser(function(user, done) {
 
 
 
+io.on("connection", (socket) => {
+  const users = {}
+  socket.on('user_joined' ,(data)=> {
+    users[socket.id] = data;
+    socket.broadcast.emit('new_user' , data)
+  })
+  socket.broadcast.emit('user' , {data : 'user'})
+  socket.on('message' , (message )=> { 
+    socket.broadcast.emit('new_msg' , {message , user : users[socket.id] })
+  })
+ });
 
 
 
@@ -96,8 +115,8 @@ app.post('/register' ,async (req , res)=> {
 })  
 
 app.get('/feeds' , Tokenauth , async (req ,res)=> {
-  const posts = await postModel.find()
-  res.render('feeds' , {posts})
+  const posts = await postModel.find().sort({createdAt : -1});
+  res.render('feeds' , {posts , moment})
 })
 
 
@@ -140,7 +159,6 @@ app.post("/verify/otp", async (req, res) => {
   let otp = req.body.verify_otp;
   console.log(otp);
   let verified = await userModel.findOne({ otp: otp });
-  console.log(verified)
     let verify = await userModel.findOneAndUpdate(
       { otp: otp },
       { verified: true }
@@ -170,12 +188,10 @@ app.post("/get/otp", async (req, res) => {
     }
   })
     .then(ee => {
-      console.log(ee.data);
     })
     .catch(err => {
       console.log(err);
     });
-  console.log(otp);
   let save_otp = await userModel.findOneAndUpdate(
     { phone: reg_phone },
     {
@@ -199,6 +215,10 @@ function generateOTP() {
 }
 
 app.get('/' , home.home)
+app.get('/chat' , Tokenauth , async(req ,res)=> {
+ const user = await userModel.findOne({phone : req.user.phone})
+  res.render('chatroom' , {user})
+})
 app.get('/logout' , (req ,res)=> {
   res.clearCookie('jwt_Token')
   res.redirect('/login')
@@ -206,8 +226,8 @@ app.get('/logout' , (req ,res)=> {
 )
 
 
-app.get('/:username' , home.username_get)
+app.get('/:username' ,  home.username_get)
 
-app.listen(port , ()=> {
+httpServer.listen(port , ()=> {
     console.log('server is running on 8000')
 })

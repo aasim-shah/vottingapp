@@ -27,7 +27,8 @@ const userSchema = mongoose.Schema({
     isParticipant : Boolean,
     tokens : [{
         token : String,
-    }]
+    }],
+    createdAt    : { type: Date, required: true, default: Date.now }
 })
 
 userSchema.methods.Authuser = async function(){

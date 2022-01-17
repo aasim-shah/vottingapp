@@ -1,0 +1,85 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navbar.ejs') %>
+<style>
+    .right{
+        background-color: rgb(216, 224, 224);
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 6px;
+        margin-left: auto;
+        width: fit-content;
+        margin-top: 9px;
+        border: 1px solid rgba(158, 158, 158, 0.575);
+    }
+    .left{
+        background-color: rgba(77, 116, 116, 0.767);
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 6px;
+        justify-content: start;
+        color: white;
+        margin-top: 9px;
+        width: fit-content;
+        margin-right:auto ;
+        border: 1px solid rgba(158, 158, 158, 0.575);
+    }
+    .center{
+        background-color: rgba(36, 37, 31, 0.767);
+        padding-left: 15px;
+        padding-right: 15px;
+        color: white;
+        border-radius: 6px;
+        justify-content: start;
+        margin-top: 9px;
+        width: fit-content;
+        margin: 3px auto;
+        border: 1px solid rgba(158, 158, 158, 0.575);
+    }
+</style>
+<div class="">
+    <input type="hidden" id="username" value="<%= user.username%>"> 
+
+<div class=" mt-6" >
+    <div id="msg_container" class="container flex flex-col mx-auto" style="min-height: 76vh;">
+    </div>
+    <form action="#" class="d-flex justify-center ">
+        <input type="text" name="" id="input" class=" border-b-2 px-3 border-gray-900" placeholder="Type a message here ">
+    <button id="send" type="submit" class="btn btn-sm btncolor ms-2" >send</button>
+    </form>
+</div>
+    
+<div class="" style="margin-top:24%;">
+<%- include('./partials/footer.ejs') %>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const username = document.getElementById('username').value;
+  const socket = io();
+
+  socket.on("connect", () => {
+  socket.emit('user_joined' , username)
+});
+const msg_container = document.getElementById('msg_container');
+const append = (message , position) => {
+    const msgBox = document.createElement('div')
+    msgBox.innerText = message;
+    msgBox.classList.add(position)
+    msg_container.appendChild(msgBox)
+}
+let d =[ { "okay" : "okay" } , { "okay1" : "okay2"}]
+socket.on("new_user", (data)=> {
+//  append(`${data} joined the chat`, 'center')
+ });
+ document.getElementById("send").addEventListener("click", function(event){
+  event.preventDefault()
+     let msg = document.getElementById('input').value;
+    append(msg , 'right')
+     socket.emit('message' , {message : msg })
+        document.getElementById('input').value = '';
+    });
+
+    socket.on('new_msg' , (data) => {
+         console.log(data)
+         append(`${data.user} : ${data.message.message}` , 'left')
+        })
+</script>

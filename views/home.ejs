@@ -64,7 +64,7 @@
       </div>
     </div>
    <input type="hidden" name="participant_id" class="participant_id" />
-  <input type="text" name=""   placeholder="Enter Username" class="form-control rounded-full  mt-2 w-46 search_term"/>
+  <input type="text" name="" id="searchword"   placeholder="Enter Username" class="form-control rounded-full  mt-2 w-46 search_term"/>
             <div class="rounded-md py-1 px-2 bg-gray-300 mt-2 " onClick="search('<%= contest._id %>')" >Find Participant</div></div>
   <input type="hidden" name="contest_id" class="contest_id" value="<%= contest._id %>"/>
             <button type="submit" class="py-2  btncolor  mt-2 text-sm  text-white font-bold rounded" style="width:270px">VOTE FOR YOUR FAV CONTESTANT</button>
@@ -84,9 +84,10 @@
 
 
 
-<%- include('./partials/footer.ejs') %>
+          <div class="mt-20">
 
-
+            <%- include('./partials/footer.ejs') %>
+            </div>
 <script>
 // Set the date we're counting down to
 var countDownDate = new Date("Feb 16, 2022 00:00:25").getTime();
@@ -122,8 +123,8 @@ var x = setInterval(function() {
 <script>
 
 const search = function(e){
-const val = document.querySelector('.search_term').value;
-axios.post('https://voting-app-demo.glitch.me/user/search', {data : val}).then((res)=> {
+const val = document.querySelector('#searchword').value;
+axios.post('http://localhost:8000/user/search', {data : val}).then((res)=> {
 if(res.data == ''){
 document.getElementById(e).style.display= 'flex';
 document.getElementById(e).innerHTML ="No user Found "; 

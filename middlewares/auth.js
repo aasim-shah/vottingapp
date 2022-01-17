@@ -29,7 +29,7 @@ class auth {
      req.user = verfified_user
      next()
     } catch (error) {
-      res.cookie('url' , req.get('Referer') )
+      res.cookie('url' , req.get('Referer'))
       res.redirect('/login')
     }
    } 

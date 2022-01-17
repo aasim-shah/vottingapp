@@ -18,7 +18,6 @@ class users {
      const user = await userModel.findOne({phone})
      const posts = await postModel.find({user_id : req.user.phone})
      let contest = await contestModel.find({_id : {$in : user.contests}})
-    console.log(posts)
          res.render('profile' , {user , contest , posts})
     }
   
@@ -38,13 +37,11 @@ const contests = await contesModel.find()
 
     
     async  admin_get(req ,res) {
-        console.log(req.user)
         res.render('adminhome')
     }
       
     async  admin_search(req ,res) {
         const username = req.body.search;
-        console.log(username)
      const searched = await   userModel.findOne({$text: {$search: `${username}`}});
         res.send(searched)
     }
@@ -68,7 +65,6 @@ const contests = await contesModel.find()
               const id = req.body.contest_id;
 
       const participant_id = req.body.participant_id;
-                  console.log(participant_id)
 
       if(req.user.phone == participant_id){
         res.send('You Can\'t Vote Your Self')
@@ -139,7 +135,6 @@ const contests = await contesModel.find()
     }
 
   async participate_post (req, res)  {
-    console.log(req.body.contest_id)
     const user  = await userModel.findOneAndUpdate({phone : req.user.phone} , {
         first_name : req.body.first_name,
         last_name : req.body.last_name,

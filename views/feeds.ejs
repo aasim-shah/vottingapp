@@ -6,7 +6,8 @@
    <% if(posts){posts.forEach(post => {%>
     <div class="card mt-2" >
         <div class="card-body">
-          <h6 class="card-subtitle mb-2 container text-muted flex justify-between"><span class=""><%= post.name %></span><span class="">date</span></h6>
+          <h6 class="card-subtitle mb-2 container text-muted flex justify-between"><span class=""><%= post.name %></span><span class=""><%= moment(post.createdAt).format( 'LT') %>
+          </span></h6>
           <img class="card-img-top" src="<%=  post.image %>" alt="Card image cap">
           <div class="text-end mr-3" style="margin-top: -32px;">
                 <form action="/user/url/voted" method="post">
@@ -20,7 +21,8 @@
     <% }%>
 </div>
     
-<div class="" style="margin-top:24%;">
-<%- include('./partials/footer.ejs') %>
-</div>
 
+<div class="mt-20">
+
+  <%- include('./partials/footer.ejs') %>
+  </div>

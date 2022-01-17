@@ -6,7 +6,9 @@ import db from "../db/db.js";
 const postSchema = mongoose.Schema({
   user_id : String,
   image:String,
-  name: String
+  name: String,
+  createdAt : { type: Date, required: true, default: Date.now }
+
 })
 
 
